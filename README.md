@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# RepForge
 
-## Getting Started
+A free-first bodybuilding and fitness web app for adults 18+.
 
-First, run the development server:
+Discover exercises, build workouts, run a session timer with spoken alerts, and explore a demo dashboard — with a cinematic dark UI (charcoal + electric lime).
+
+## Quick start (beginner-friendly)
+
+1. Open a terminal in this folder (`repforge`).
+2. Install dependencies (already done if you followed setup):
+
+```bash
+npm install
+```
+
+3. Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. **Keep that terminal open.** When you see `✓ Ready`, open [http://127.0.0.1:3000](http://127.0.0.1:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+If the terminal returns to a new prompt right away, the server stopped. Run `npm run dev` again and wait until it says Ready (first start can take 1–2 minutes on slower disks).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Add the hero video (optional)
 
-## Learn More
+1. Get a fitness video you are allowed to use (your own filming or a licensed clip).
+2. Name it `hero-fitness.mp4`.
+3. Put it here: `public/videos/hero-fitness.mp4`
+4. Refresh the homepage — the hero will autoplay muted and loop.
 
-To learn more about Next.js, take a look at the following resources:
+Until you add a file, RepForge shows a polished illustrated hero instead. Details: `public/videos/README.md`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Supabase (later)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Copy `.env.example` to `.env.local` and add your **public** Supabase URL + anon key when you are ready for real accounts.
 
-## Deploy on Vercel
+Without those values, the app runs in **Demo mode** (clearly labeled). No secrets belong in frontend code.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Scripts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Command | What it does |
+| --- | --- |
+| `npm run dev` | Start local development |
+| `npm run build` | Production build |
+| `npm run start` | Run the production build |
+| `npm run lint` | Lint the project |
+
+## Stack
+
+- Next.js (App Router) + TypeScript
+- Tailwind CSS
+- Lucide icons
+- Recharts (progress / dashboard charts)
+- Supabase-ready data layer (credentials optional)
