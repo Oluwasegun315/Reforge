@@ -38,6 +38,18 @@ Copy `.env.example` to `.env.local` and add your **public** Supabase URL + anon 
 
 Without those values, the app runs in **Demo mode** (clearly labeled). No secrets belong in frontend code.
 
+## Deploy on Vercel
+
+GitHub does **not** create a Vercel project automatically. Import once:
+
+1. Open [vercel.com/new](https://vercel.com/new)
+2. **Add New → Project** → import `Oluwasegun315/Reforge`
+3. Framework: Next.js
+4. Add env vars: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `NEXT_PUBLIC_APP_NAME=RepForge`
+5. Click **Deploy**
+
+Repo: [github.com/Oluwasegun315/Reforge](https://github.com/Oluwasegun315/Reforge)
+
 ## Scripts
 
 | Command | What it does |
