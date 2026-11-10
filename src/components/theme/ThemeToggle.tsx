@@ -10,8 +10,8 @@ import {
 } from "@/lib/theme";
 import { cn } from "@/lib/utils";
 
-/** Explicit Dark / Light control with clear hover labels before click. */
-export function ThemeToggle() {
+/** Explicit Dark / Light control. Use compact on mobile headers. */
+export function ThemeToggle({ compact = false }: { compact?: boolean }) {
   const [mode, setMode] = useState<ThemeMode>("dark");
   const [mounted, setMounted] = useState(false);
   const [hovered, setHovered] = useState<ThemeMode | null>(null);
@@ -37,9 +37,27 @@ export function ThemeToggle() {
   if (!mounted) {
     return (
       <span
-        className="inline-flex h-9 w-[7.5rem] rounded-full border border-[var(--border)]"
+        className={cn(
+          "inline-flex h-9 rounded-full border border-[var(--border)] shrink-0",
+          compact ? "w-9" : "w-[7.5rem]"
+        )}
         aria-hidden
       />
+    );
+  }
+
+  if (compact) {
+    const next = mode === "dark" ? "light" : "dark";
+    return (
+      <button
+        type="button"
+        aria-label={mode === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+        title={mode === "dark" ? "Light mode" : "Dark mode"}
+        onClick={() => setModeAndApply(next)}
+        className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[var(--border-strong)] bg-[var(--bg-elevated)] text-[var(--text)] touch-manipulation"
+      >
+        {mode === "dark" ? <Sun size={16} aria-hidden /> : <Moon size={16} aria-hidden />}
+      </button>
     );
   }
 
@@ -47,7 +65,7 @@ export function ThemeToggle() {
     <div
       role="group"
       aria-label="Color theme"
-      className="inline-flex items-center rounded-full border border-[var(--border-strong)] bg-[var(--bg-elevated)] p-0.5 shadow-sm"
+      className="inline-flex items-center rounded-full border border-[var(--border-strong)] bg-[var(--bg-elevated)] p-0.5 shadow-sm shrink-0"
     >
       <button
         type="button"

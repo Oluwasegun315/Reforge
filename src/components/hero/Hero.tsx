@@ -47,30 +47,30 @@ export function Hero() {
         aria-hidden
       />
 
-      <div className="relative z-10 flex min-h-[100svh] items-end">
-        <div className="container-page w-full pb-16 pt-24 md:pb-20">
+      <div className="relative z-10 flex min-h-[100svh] items-end on-media">
+        <div className="container-page w-full pb-20 pt-24 md:pb-20">
           <div className="max-w-3xl">
-            <p className="section-eyebrow mb-4 drop-shadow-[0_2px_10px_rgba(0,0,0,0.85)]">
-              <span className="h-1.5 w-1.5 rounded-full bg-[var(--lime)]" aria-hidden />
+            <p className="section-eyebrow mb-4 !text-zinc-200 drop-shadow-[0_2px_10px_rgba(0,0,0,0.85)]">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#c8ff3c]" aria-hidden />
               {inside
                 ? `Signed in · Welcome back, ${first}`
                 : "Guest browsing · Ages 18+"}
             </p>
             <h1
               id="hero-heading"
-              className="display-title text-[clamp(2.9rem,8.5vw,5.8rem)] mb-5 text-white drop-shadow-[0_8px_32px_rgba(0,0,0,0.9)]"
+              className="display-title text-[clamp(2.4rem,9vw,5.8rem)] mb-5 text-white drop-shadow-[0_8px_32px_rgba(0,0,0,0.9)]"
             >
               {inside ? (
                 <>
                   Back in the forge,
                   <br />
-                  <span className="text-[var(--lime)]">{first}.</span>
+                  <span className="hero-accent">{first}.</span>
                 </>
               ) : (
                 <>
                   Stop waiting.
                   <br />
-                  <span className="text-[var(--lime)]">Start forging.</span>
+                  <span className="hero-accent">Start forging.</span>
                 </>
               )}
             </h1>
@@ -79,27 +79,27 @@ export function Hero() {
                 ? "You’re inside your RepForge account — dashboard, alerts, and settings are unlocked. Pick up today’s session or check your streak."
                 : "Every champion started as a beginner who refused to quit. Browse as a guest, or sign in to unlock your personal dashboard, reminders, and progress."}
             </p>
-            <div className="flex flex-wrap gap-3 mb-4">
+            <div className="flex flex-col xs:flex-row flex-wrap gap-3 mb-4 w-full max-w-md sm:max-w-none">
               {inside ? (
                 <>
-                  <Link href="/dashboard" className="btn-primary">
+                  <Link href="/dashboard" className="btn-primary w-full sm:w-auto justify-center">
                     Open dashboard
                   </Link>
                   <Link
                     href="/workouts/timer"
-                    className="btn-secondary !border-white/35 !text-white hover:!border-[var(--lime)] hover:!text-[var(--lime)]"
+                    className="btn-secondary w-full sm:w-auto justify-center !border-white/35 !text-white hover:!border-[#c8ff3c] hover:!text-[#c8ff3c]"
                   >
                     Start timer
                   </Link>
                 </>
               ) : (
                 <>
-                  <Link href="/auth/signup" className="btn-primary">
+                  <Link href="/auth/signup" className="btn-primary w-full sm:w-auto justify-center">
                     Start for Free
                   </Link>
                   <Link
                     href="/exercises"
-                    className="btn-secondary !border-white/35 !text-white hover:!border-[var(--lime)] hover:!text-[var(--lime)]"
+                    className="btn-secondary w-full sm:w-auto justify-center !border-white/35 !text-white hover:!border-[#c8ff3c] hover:!text-[#c8ff3c]"
                   >
                     Explore as guest
                   </Link>

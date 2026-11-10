@@ -54,15 +54,21 @@ export function Navbar() {
           : "border-[var(--border)] bg-[var(--nav-blur)]"
       )}
     >
-      <div className="container-page flex items-center justify-between h-16 md:h-[4.25rem]">
-        <Link href="/" prefetch className="flex items-center gap-2 font-bold text-lg tracking-tight">
-          <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[var(--lime)] text-black">
+      <div className="container-page flex items-center gap-2 h-14 sm:h-16 md:h-[4.25rem]">
+        <Link
+          href="/"
+          prefetch
+          className="flex items-center gap-2 font-bold text-lg tracking-tight min-w-0 shrink"
+        >
+          <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[var(--lime)] text-black">
             <Dumbbell size={18} aria-hidden />
           </span>
-          <span className="display-title text-xl normal-case tracking-tight">RepForge</span>
+          <span className="display-title text-lg sm:text-xl normal-case tracking-tight truncate">
+            RepForge
+          </span>
           <span
             className={cn(
-              "hidden sm:inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider",
+              "hidden md:inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider shrink-0",
               inside
                 ? "bg-[var(--lime)] text-black"
                 : "border border-[var(--border-strong)] text-[var(--text-dim)]"
@@ -72,7 +78,7 @@ export function Navbar() {
           </span>
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-1" aria-label="Main">
+        <nav className="hidden lg:flex items-center gap-1 mx-auto" aria-label="Main">
           {links.map((link) => (
             <Link
               key={link.href}
@@ -90,7 +96,7 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden lg:flex items-center gap-2">
+        <div className="hidden lg:flex items-center gap-2 shrink-0 ml-auto">
           <ThemeToggle />
           {inside && <NotificationBell />}
           {inside && auth.preferredName ? (
@@ -111,23 +117,16 @@ export function Navbar() {
           )}
         </div>
 
-        <div className="flex lg:hidden items-center gap-1">
-          <ThemeToggle />
+        {/* Phone / tablet: icon theme + menu only — no cramped Sign in / full toggle */}
+        <div className="flex lg:hidden items-center gap-1.5 shrink-0 ml-auto">
+          <ThemeToggle compact />
           {inside && <NotificationBell />}
           {inside && auth.preferredName ? (
             <UserMenu preferredName={auth.preferredName} photoUrl={auth.photoUrl} />
-          ) : (
-            <Link
-              href="/auth/signin"
-              prefetch
-              className="btn-ghost !min-h-0 !py-2 !px-3 text-sm"
-            >
-              Sign in
-            </Link>
-          )}
+          ) : null}
           <Button
             variant="ghost"
-            className="!min-h-0 !p-2"
+            className="!min-h-0 !p-2 shrink-0"
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? "Close menu" : "Open menu"}
@@ -139,8 +138,11 @@ export function Navbar() {
       </div>
 
       {open && (
-        <div id="mobile-nav" className="lg:hidden border-t border-[var(--border)] bg-[var(--bg)]">
-          <nav className="container-page py-4 flex flex-col gap-1" aria-label="Mobile">
+        <div
+          id="mobile-nav"
+          className="lg:hidden border-t border-[var(--border)] bg-[var(--bg)] max-h-[min(70vh,28rem)] overflow-y-auto"
+        >
+          <nav className="container-page py-3 flex flex-col gap-1" aria-label="Mobile">
             <p
               className={cn(
                 "px-3 py-2 mb-1 rounded-lg text-xs font-semibold uppercase tracking-wider",
@@ -156,8 +158,8 @@ export function Navbar() {
                 prefetch
                 onClick={() => setOpen(false)}
                 className={cn(
-                  "px-3 py-3 rounded-lg font-medium",
-                  pathname === link.href
+                  "px-3 py-3 rounded-lg font-medium touch-manipulation",
+                  pathname === link.href || pathname.startsWith(link.href + "/")
                     ? "text-[var(--lime)] bg-[var(--lime-dim)]"
                     : "text-[var(--text-muted)]"
                 )}

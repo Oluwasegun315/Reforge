@@ -222,10 +222,23 @@ html[data-theme="light"] .btn-ghost:hover {
   background: var(--chip-idle-bg);
 }
 
-/* Hardcoded Tailwind whites break in light mode — force theme text */
-html.light .text-white,
-html[data-theme="light"] .text-white {
-  color: var(--text) !important;
+/*
+ * Hero / video overlays stay white in light mode.
+ * Do NOT remap .text-white globally — that made "Stop waiting." unreadable on dark media.
+ */
+.on-media,
+.on-media .text-white {
+  color: #fff !important;
+}
+.on-media .text-zinc-100 {
+  color: #f4f4f5 !important;
+}
+.on-media .text-zinc-300 {
+  color: #d4d4d8 !important;
+}
+.on-media .text-lime-on-media,
+.on-media .hero-accent {
+  color: #c8ff3c !important;
 }
 
 .badge {
