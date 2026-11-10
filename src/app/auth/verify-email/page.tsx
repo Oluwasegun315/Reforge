@@ -10,6 +10,7 @@ import { hasSupabaseCredentials } from "@/lib/supabase/config";
 import { createBrowserClient, getAuthRedirectUrl } from "@/lib/supabase/client";
 import { notificationsStore } from "@/lib/notifications";
 import { markSignedIn } from "@/lib/auth-session";
+import { SITE_URL } from "@/lib/seo";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 
@@ -149,8 +150,7 @@ function VerifyEmailInner() {
           <p className="text-sm text-[var(--danger)] text-left border border-[rgba(255,90,90,0.35)] rounded-xl p-3">
             Live email is not connected on this environment. Add Supabase URL + anon key in Vercel
             Environment Variables, set Auth redirect URL to{" "}
-            <code className="text-xs">https://oluwasegun-reforge.vercel.app/auth/callback</code>,
-            then redeploy.
+            <code className="text-xs break-all">{SITE_URL}/auth/callback</code>, then redeploy.
           </p>
         )}
 

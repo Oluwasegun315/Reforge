@@ -14,6 +14,17 @@ const tabs = [
   { href: "/progress", label: "Stats", icon: LineChart },
 ] as const;
 
+function tabIsActive(pathname: string, href: string) {
+  if (href === "/workouts/timer") return pathname.startsWith("/workouts/timer");
+  if (href === "/exercises") {
+    return (
+      pathname.startsWith("/exercises") ||
+      (pathname.startsWith("/workouts") && !pathname.startsWith("/workouts/timer"))
+    );
+  }
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
 export function MobileTabBar() {
   const pathname = usePathname();
   const auth = useAuth();
@@ -23,14 +34,12 @@ export function MobileTabBar() {
 
   return (
     <nav
-      className="lg:hidden fixed bottom-0 inset-x-0 z-50 border-t border-[var(--border)] bg-[var(--nav-blur)] backdrop-blur-xl pb-[env(safe-area-inset-bottom)]"
+      className="lg:hidden fixed bottom-0 inset-x-0 z-[55] border-t border-[var(--border)] bg-[var(--nav-blur)] backdrop-blur-xl pb-[env(safe-area-inset-bottom,0px)]"
       aria-label="App tabs"
     >
       <ul className="grid grid-cols-5 gap-0.5 px-1 pt-1.5 pb-1.5 max-w-lg mx-auto">
         {tabs.map((tab) => {
-          const active =
-            pathname === tab.href ||
-            (tab.href !== "/dashboard" && pathname.startsWith(tab.href));
+          const active = tabIsActive(pathname, tab.href);
           const Icon = tab.icon;
           return (
             <li key={tab.href}>
@@ -38,7 +47,7 @@ export function MobileTabBar() {
                 href={tab.href}
                 prefetch
                 className={cn(
-                  "flex flex-col items-center justify-center gap-0.5 rounded-xl py-2 min-h-[3.25rem] text-[10px] font-semibold tracking-wide transition",
+                  "flex flex-col items-center justify-center gap-0.5 rounded-xl py-2 min-h-[3.25rem] text-[10px] font-semibold tracking-wide transition touch-manipulation",
                   active
                     ? "text-[var(--lime)] bg-[var(--lime-dim)]"
                     : "text-[var(--text-dim)] hover:text-[var(--text-muted)]"

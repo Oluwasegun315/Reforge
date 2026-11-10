@@ -121,6 +121,12 @@ export function AuthPanel({ mode }: { mode: AuthMode }) {
       }
 
       if (!data.session) {
+        const identities = data.user?.identities ?? [];
+        if (data.user && identities.length === 0) {
+          setLoading(null);
+          setError("An account with this email already exists. Sign in instead.");
+          return;
+        }
         setLoading(null);
         setMessage("Confirmation email sent. Open Gmail (check Spam too), then come back.");
         router.push(`/auth/verify-email?email=${encodeURIComponent(cleanEmail)}`);

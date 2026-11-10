@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import type { Session } from "@supabase/supabase-js";
 import { createBrowserClient } from "@/lib/supabase/client";
 import { localData } from "@/lib/storage";
 import { normalizeProfile } from "@/lib/profile";
@@ -22,24 +23,33 @@ export default function AuthCallbackPage() {
       }
 
       const url = new URL(window.location.href);
+      const oauthError =
+        url.searchParams.get("error_description") ?? url.searchParams.get("error");
+      if (oauthError) {
+        const message = decodeURIComponent(oauthError);
+        setStatus(message);
+        router.replace(`/auth/signin?error=${encodeURIComponent(message)}`);
+        return;
+      }
+
       const code = url.searchParams.get("code");
       if (code) {
         const { error } = await supabase.auth.exchangeCodeForSession(code);
         if (error) {
-          setStatus("Could not complete sign-in.");
+          setStatus(error.message || "Could not complete sign-in.");
           router.replace("/auth/signin");
           return;
         }
       }
 
-      const { data, error } = await supabase.auth.getSession();
-      if (error || !data.session?.user) {
+      const session = await waitForSession(supabase);
+      if (!session?.user) {
         setStatus("Could not complete sign-in.");
         router.replace("/auth/signin");
         return;
       }
 
-      applyProfile(data.session.user.email, data.session.user.user_metadata);
+      applyProfile(session.user.email, session.user.user_metadata);
       router.replace("/dashboard");
     };
 
@@ -51,6 +61,34 @@ export default function AuthCallbackPage() {
       {status}
     </div>
   );
+}
+
+async function waitForSession(
+  supabase: NonNullable<ReturnType<typeof createBrowserClient>>
+): Promise<Session | null> {
+  const existing = await supabase.auth.getSession();
+  if (existing.data.session?.user) return existing.data.session;
+
+  return new Promise((resolve) => {
+    let settled = false;
+    const done = (session: Session | null) => {
+      if (settled) return;
+      settled = true;
+      sub.subscription.unsubscribe();
+      window.clearTimeout(timer);
+      resolve(session);
+    };
+
+    const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session?.user) done(session);
+    });
+
+    void supabase.auth.getSession().then(({ data }) => {
+      if (data.session?.user) done(data.session);
+    });
+
+    const timer = window.setTimeout(() => done(null), 2500);
+  });
 }
 
 function applyProfile(

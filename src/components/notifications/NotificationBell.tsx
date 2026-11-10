@@ -137,7 +137,7 @@ export function NotificationBell() {
       </button>
 
       {open && (
-        <div className="absolute right-0 mt-2 w-[min(22.5rem,calc(100vw-1.5rem))] rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] shadow-2xl z-50 overflow-hidden">
+        <div className="absolute right-0 mt-2 w-[min(22.5rem,calc(100vw-1.5rem))] rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] shadow-2xl z-[70] overflow-hidden">
           <div className="px-4 py-3 border-b border-[var(--border)] space-y-3">
             <div className="flex items-start justify-between gap-3">
               <div>

@@ -24,11 +24,19 @@ export function AppChrome({ children }: { children: React.ReactNode }) {
     (p) => pathname === p || pathname.startsWith(`${p}/`)
   );
   const compactChrome = inside && isAppSurface;
+  const showMobileTabs = inside;
 
   return (
     <>
       <Navbar />
-      <main id="main" className={compactChrome ? "pb-24 lg:pb-8" : undefined}>
+      <main
+        id="main"
+        className={
+          showMobileTabs
+            ? "pb-[calc(5.75rem+env(safe-area-inset-bottom,0px))] lg:pb-8"
+            : undefined
+        }
+      >
         {children}
       </main>
       {!compactChrome && <Footer />}

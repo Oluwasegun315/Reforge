@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Syne } from "next/font/google";
 import { AppChrome } from "@/components/layout/AppChrome";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
@@ -12,6 +12,16 @@ import {
   SITE_URL,
 } from "@/lib/seo";
 import "./globals.css";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#070708" },
+    { media: "(prefers-color-scheme: light)", color: "#f4f4f5" },
+  ],
+};
 
 const body = Space_Grotesk({
   variable: "--font-body",
