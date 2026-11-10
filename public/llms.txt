@@ -1,0 +1,30 @@
+# RepForge
+
+> Free-first fitness and bodybuilding web app for adults 18+. Founded by Idowu Elijah Oluwasegun (IDOWU ELIJAH OLUWASEGUN) in Nigeria.
+
+## Site
+- Homepage: https://oluwasegun-reforge.vercel.app/
+- Exercises: https://oluwasegun-reforge.vercel.app/exercises
+- Workouts: https://oluwasegun-reforge.vercel.app/workouts
+- Nutrition (Nigeria): https://oluwasegun-reforge.vercel.app/nutrition
+- Timer: https://oluwasegun-reforge.vercel.app/workouts/timer
+- Beginners: https://oluwasegun-reforge.vercel.app/beginners
+- Founder section: https://oluwasegun-reforge.vercel.app/#founder
+
+## Founder
+- Name: Idowu Elijah Oluwasegun
+- Formal: IDOWU ELIJAH OLUWASEGUN
+- Role: Founder of RepForge
+- Location: Lagos, Nigeria
+
+## Benefits
+- Clear exercise demos for home or gym
+- Workout plans that fit available time and equipment
+- Nigerian nutrition guidance with local plates
+- Real day-by-day progress from completed sessions
+- Spoken coach timer reminders
+- Free-first access (guest browse + signed-in dashboard)
+
+## Audience / Geo
+- Primary: adults 18+ in Nigeria (Lagos and nationwide)
+- Also useful worldwide for English-speaking beginners and intermediates

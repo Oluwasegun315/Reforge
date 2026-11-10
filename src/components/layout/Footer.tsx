@@ -10,6 +10,13 @@ export function Footer() {
             Free-first fitness for adults 18+. Discover exercises, build workouts, and track
             progress at your own pace. Guidance only — not medical advice.
           </p>
+          <p className="text-sm text-[var(--text-dim)] mt-3">
+            Founded by{" "}
+            <Link href="/#founder" className="text-[var(--lime)] hover:underline font-medium">
+              Idowu Elijah Oluwasegun
+            </Link>{" "}
+            · Lagos, Nigeria
+          </p>
         </div>
         <div>
           <p className="font-semibold mb-3">Explore</p>
@@ -78,8 +85,8 @@ export function Footer() {
         </div>
       </div>
       <div className="container-page pb-8 text-xs text-[var(--text-dim)]">
-        © <span suppressHydrationWarning>{new Date().getFullYear()}</span> RepForge.
-        Train smart. Progress at your pace.
+        © <span suppressHydrationWarning>{new Date().getFullYear()}</span> RepForge · Founded by
+        IDOWU ELIJAH OLUWASEGUN. Train smart. Progress at your pace.
       </div>
     </footer>
   );

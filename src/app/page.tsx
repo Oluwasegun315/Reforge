@@ -1,9 +1,18 @@
+import type { Metadata } from "next";
 import { Hero } from "@/components/hero/Hero";
 import { BeginnerSection } from "@/components/beginner/BeginnerSection";
 import { FocusGuideSection } from "@/components/beginner/FocusGuideSection";
+import { BenefitsFounder } from "@/components/home/BenefitsFounder";
 import { HomeCta } from "@/components/home/HomeCta";
 import { Card } from "@/components/ui/Card";
+import { FOUNDER, SITE_DESCRIPTION, SITE_NAME } from "@/lib/seo";
 import { Timer, Dumbbell, LineChart, UtensilsCrossed } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: `${SITE_NAME} — Free Fitness App by ${FOUNDER.name}`,
+  description: SITE_DESCRIPTION,
+  alternates: { canonical: "/" },
+};
 
 const highlights = [
   {
@@ -58,6 +67,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      <BenefitsFounder />
       <HomeCta />
     </>
   );
