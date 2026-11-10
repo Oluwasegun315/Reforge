@@ -63,6 +63,9 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
     images: ["/images/hero-man-poster.jpg"],
   },
+  verification: {
+    google: "gaQKUL56hVACLkD5kS2XFWc3yT5K2BNvI6JRaDr6fnI",
+  },
   robots: {
     index: true,
     follow: true,
