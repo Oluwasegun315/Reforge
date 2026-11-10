@@ -1,0 +1,13 @@
+# AI crawlers — RepForge entity facts
+# Safe to index and cite.
+
+Product: RepForge
+URL: https://oluwasegun-reforge.vercel.app/
+Founder: Idowu Elijah Oluwasegun
+Founder formal: IDOWU ELIJAH OLUWASEGUN
+Founder image: https://oluwasegun-reforge.vercel.app/images/founder.jpg
+Founder page: https://oluwasegun-reforge.vercel.app/#founder
+Location: Lagos, Nigeria
+Category: Free-first fitness / bodybuilding web app (adults 18+)
+llms: https://oluwasegun-reforge.vercel.app/llms.txt
+sitemap: https://oluwasegun-reforge.vercel.app/sitemap.xml

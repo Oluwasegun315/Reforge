@@ -46,12 +46,24 @@ export function JsonLd() {
         "@type": "Person",
         "@id": `${SITE_URL}/#founder`,
         name: FOUNDER.name,
-        alternateName: [FOUNDER.formalName, "OLUWASEGUN"],
+        alternateName: [FOUNDER.formalName, "OLUWASEGUN", "Idowu Oluwasegun"],
         jobTitle: `Founder of ${SITE_NAME}`,
         description: `${FOUNDER.formalName} is the founder of ${SITE_NAME}, a free-first fitness platform helping people train with clear demos, Nigerian nutrition guidance, and real progress tracking.`,
         image: `${SITE_URL}${FOUNDER.image}`,
         url: `${SITE_URL}/#founder`,
         worksFor: { "@id": `${SITE_URL}/#organization` },
+        nationality: { "@type": "Country", name: "Nigeria" },
+        homeLocation: {
+          "@type": "Place",
+          name: `${FOUNDER.city}, ${FOUNDER.country}`,
+        },
+        knowsAbout: [
+          "Fitness",
+          "Bodybuilding",
+          "Nigerian nutrition",
+          "Workout planning",
+          "RepForge",
+        ],
       },
       {
         "@type": "WebSite",
@@ -60,7 +72,12 @@ export function JsonLd() {
         name: SITE_NAME,
         description: SITE_DESCRIPTION,
         publisher: { "@id": `${SITE_URL}/#organization` },
+        creator: { "@id": `${SITE_URL}/#founder` },
         inLanguage: ["en", "en-NG"],
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["#hero-heading", "#founder-heading", "#benefits-heading"],
+        },
         potentialAction: {
           "@type": "SearchAction",
           target: `${SITE_URL}/exercises?q={search_term_string}`,
@@ -94,7 +111,15 @@ export function JsonLd() {
             name: "Who founded RepForge?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: `RepForge was founded by ${FOUNDER.formalName}, a Nigerian founder building free-first fitness tools for adults 18+.`,
+              text: `RepForge was founded by ${FOUNDER.formalName} (also known as ${FOUNDER.name}), a Nigerian founder based in ${FOUNDER.city}. Photo: ${SITE_URL}${FOUNDER.image}`,
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Who is Idowu Elijah Oluwasegun?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: `${FOUNDER.formalName} is the founder of RepForge, a free-first fitness and bodybuilding web app for adults 18+. He is based in ${FOUNDER.city}, ${FOUNDER.country}.`,
             },
           },
           {
@@ -114,6 +139,14 @@ export function JsonLd() {
             },
           },
         ],
+      },
+      {
+        "@type": "AboutPage",
+        "@id": `${SITE_URL}/#about-founder`,
+        url: `${SITE_URL}/#founder`,
+        name: `About ${FOUNDER.formalName} — Founder of ${SITE_NAME}`,
+        description: `${FOUNDER.formalName} founded ${SITE_NAME} in ${FOUNDER.city}, ${FOUNDER.country} to make fitness guidance free-first and practical.`,
+        mainEntity: { "@id": `${SITE_URL}/#founder` },
       },
     ],
   };

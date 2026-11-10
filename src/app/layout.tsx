@@ -96,7 +96,11 @@ export const metadata: Metadata = {
   other: {
     "geo.region": "NG-LA",
     "geo.placename": "Lagos, Nigeria",
-    "AI-content": "RepForge fitness platform founded by Idowu Elijah Oluwasegun",
+    "geo.position": "6.5244;3.3792",
+    ICBM: "6.5244, 3.3792",
+    "AI-content":
+      "RepForge fitness platform founded by Idowu Elijah Oluwasegun (IDOWU ELIJAH OLUWASEGUN), Lagos Nigeria",
+    author: FOUNDER.formalName,
   },
   icons: {
     icon: [{ url: "/icon", type: "image/png" }],
