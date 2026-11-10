@@ -20,7 +20,7 @@ export function RequireAuth({ children }: { children: React.ReactNode }) {
 
   if (!ready) {
     return (
-      <div className="container-page py-16 text-center text-[var(--text-muted)] text-sm">
+      <div className="py-16 text-center text-[var(--text-muted)] text-sm">
         Checking your account…
       </div>
     );
@@ -28,7 +28,7 @@ export function RequireAuth({ children }: { children: React.ReactNode }) {
 
   if (!auth.loggedIn) {
     return (
-      <div className="container-page py-12 max-w-lg mx-auto">
+      <div className="py-8 max-w-lg mx-auto">
         <Card className="!p-6 md:!p-8 space-y-4 text-center">
           <h1 className="display-title text-3xl">Sign in required</h1>
           <p className="text-sm text-[var(--text-muted)] leading-relaxed">

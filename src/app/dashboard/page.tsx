@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function DashboardPage() {
   return (
-    <div className="container-page py-10 md:py-14">
+    <div className="container-page py-6 sm:py-8 md:py-12">
       <RequireAuth>
         <DashboardView />
       </RequireAuth>

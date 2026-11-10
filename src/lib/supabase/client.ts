@@ -19,6 +19,11 @@ export function createBrowserClient(): SupabaseClient | null {
 }
 
 export function getAuthRedirectUrl(path = "/auth/callback") {
-  if (typeof window === "undefined") return path;
-  return `${window.location.origin}${path}`;
+  const normalized = path.startsWith("/") ? path : `/${path}`;
+  const site = (process.env.NEXT_PUBLIC_SITE_URL ?? "").replace(/\/$/, "");
+  if (typeof window !== "undefined" && window.location?.origin) {
+    return `${window.location.origin}${normalized}`;
+  }
+  if (site) return `${site}${normalized}`;
+  return normalized;
 }

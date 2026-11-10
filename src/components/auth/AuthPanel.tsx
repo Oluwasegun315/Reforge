@@ -122,6 +122,7 @@ export function AuthPanel({ mode }: { mode: AuthMode }) {
 
       if (!data.session) {
         setLoading(null);
+        setMessage("Confirmation email sent. Open Gmail (check Spam too), then come back.");
         router.push(`/auth/verify-email?email=${encodeURIComponent(cleanEmail)}`);
         return;
       }

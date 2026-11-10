@@ -136,6 +136,18 @@ video {
   margin-inline: auto;
 }
 
+@media (min-width: 640px) {
+  .container-page {
+    width: min(1180px, calc(100% - 2.5rem));
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-page {
+    width: min(1180px, calc(100% - 3rem));
+  }
+}
+
 .display-title {
   font-family: var(--font-display), Impact, sans-serif;
   letter-spacing: -0.03em;

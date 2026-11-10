@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Syne } from "next/font/google";
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
+import { AppChrome } from "@/components/layout/AppChrome";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { AuthProvider } from "@/components/auth/AuthProvider";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -107,9 +106,7 @@ export default function RootLayout({
             <a href="#main" className="skip-link">
               Skip to content
             </a>
-            <Navbar />
-            <main id="main">{children}</main>
-            <Footer />
+            <AppChrome>{children}</AppChrome>
           </AuthProvider>
         </ThemeProvider>
       </body>
