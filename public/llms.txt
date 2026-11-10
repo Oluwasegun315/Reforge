@@ -36,6 +36,10 @@ A: Clear exercise demos, plans that fit your schedule, Nigeria-aware nutrition, 
 - Location: Lagos, Nigeria
 - Nationality: Nigerian
 - Image: https://oluwasegun-reforge.vercel.app/images/founder.jpg
+- Email: idowuoluwasegun197@gmail.com
+- Phone MTN: 09169540998
+- Phone Airtel: 09075288805
+- Why he built RepForge: Life in Nigeria is not always easy. Many people face stress and unhealthy habits. He built RepForge so Nigerians and anyone who wants better can choose healthy daily exercise — look good, feel stronger, and stay fit without needing an expensive gym just to begin.
 
 ## Benefits
 - Clear exercise demos for home or gym

@@ -1,9 +1,10 @@
 import Link from "next/link";
+import { FOUNDER } from "@/lib/seo";
 
 export function Footer() {
   return (
     <footer className="border-t border-[var(--border)] mt-20">
-      <div className="container-page py-10 grid gap-8 md:grid-cols-[1.4fr_1fr_1fr]">
+      <div className="container-page py-10 grid gap-8 md:grid-cols-[1.3fr_1fr_1fr_1fr]">
         <div>
           <p className="display-title text-2xl mb-3">RepForge</p>
           <p className="text-[var(--text-muted)] max-w-sm text-sm leading-relaxed">
@@ -81,6 +82,28 @@ export function Footer() {
                 Sign up
               </Link>
             </li>
+          </ul>
+        </div>
+        <div>
+          <p className="font-semibold mb-3">Contact</p>
+          <ul className="space-y-2 text-sm text-[var(--text-muted)]">
+            <li>
+              <Link href="/#founder" className="hover:text-[var(--lime)]">
+                About founder
+              </Link>
+            </li>
+            <li>
+              <a href={`mailto:${FOUNDER.email}`} className="hover:text-[var(--lime)] break-all">
+                {FOUNDER.email}
+              </a>
+            </li>
+            {FOUNDER.phones.map((phone) => (
+              <li key={phone.number}>
+                <a href={phone.href} className="hover:text-[var(--lime)]">
+                  {phone.label}: {phone.number}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

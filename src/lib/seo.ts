@@ -12,6 +12,13 @@ export const FOUNDER = {
   city: "Lagos",
   /** Place your photo at public/images/founder.jpg */
   image: "/images/founder.jpg",
+  email: "idowuoluwasegun197@gmail.com",
+  phones: [
+    { label: "MTN", number: "09169540998", href: "tel:+2349169540998" },
+    { label: "Airtel", number: "09075288805", href: "tel:+2349075288805" },
+  ],
+  story:
+    "Life in Nigeria is not always easy. Many of us grow up surrounded by stress, long days, and food or habits that are not kind to our health. I built RepForge so people like me — and anyone who wants better — can still choose a healthier path: simple exercise that helps us look good, feel stronger, and stay fit on a daily basis, without needing an expensive gym membership just to begin.",
 } as const;
 
 export const SITE_DESCRIPTION =

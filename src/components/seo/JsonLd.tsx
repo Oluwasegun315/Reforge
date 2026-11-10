@@ -52,6 +52,8 @@ export function JsonLd() {
         image: `${SITE_URL}${FOUNDER.image}`,
         url: `${SITE_URL}/#founder`,
         worksFor: { "@id": `${SITE_URL}/#organization` },
+        email: FOUNDER.email,
+        telephone: FOUNDER.phones.map((p) => p.href.replace("tel:", "")),
         nationality: { "@type": "Country", name: "Nigeria" },
         homeLocation: {
           "@type": "Place",
@@ -64,6 +66,15 @@ export function JsonLd() {
           "Workout planning",
           "RepForge",
         ],
+        contactPoint: FOUNDER.phones.map((p) => ({
+          "@type": "ContactPoint",
+          contactType: "founder",
+          telephone: p.href.replace("tel:", ""),
+          email: FOUNDER.email,
+          areaServed: "NG",
+          availableLanguage: ["English"],
+          name: `${p.label} line`,
+        })),
       },
       {
         "@type": "WebSite",
