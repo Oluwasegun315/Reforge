@@ -26,6 +26,7 @@ export function JsonLd() {
           name: FOUNDER.name,
           alternateName: FOUNDER.formalName,
           jobTitle: FOUNDER.role,
+          image: `${SITE_URL}${FOUNDER.image}`,
           nationality: "Nigerian",
           address: {
             "@type": "PostalAddress",
@@ -33,6 +34,8 @@ export function JsonLd() {
             addressCountry: "NG",
           },
         },
+        image: `${SITE_URL}${FOUNDER.image}`,
+
         areaServed: [
           { "@type": "Country", name: "Nigeria" },
           { "@type": "AdministrativeArea", name: "Lagos" },
@@ -46,7 +49,8 @@ export function JsonLd() {
         alternateName: [FOUNDER.formalName, "OLUWASEGUN"],
         jobTitle: `Founder of ${SITE_NAME}`,
         description: `${FOUNDER.formalName} is the founder of ${SITE_NAME}, a free-first fitness platform helping people train with clear demos, Nigerian nutrition guidance, and real progress tracking.`,
-        url: SITE_URL,
+        image: `${SITE_URL}${FOUNDER.image}`,
+        url: `${SITE_URL}/#founder`,
         worksFor: { "@id": `${SITE_URL}/#organization` },
       },
       {

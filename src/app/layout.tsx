@@ -50,6 +50,12 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
     images: [
       {
+        url: "/images/founder.jpg",
+        width: 1200,
+        height: 1200,
+        alt: `${FOUNDER.formalName} — Founder of ${SITE_NAME}`,
+      },
+      {
         url: "/images/hero-man-poster.jpg",
         width: 1200,
         height: 630,
@@ -61,7 +67,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${SITE_NAME} — Fitness by ${FOUNDER.name}`,
     description: SITE_DESCRIPTION,
-    images: ["/images/hero-man-poster.jpg"],
+    images: ["/images/founder.jpg"],
   },
   verification: {
     google: "gaQKUL56hVACLkD5kS2XFWc3yT5K2BNvI6JRaDr6fnI",

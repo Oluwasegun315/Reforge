@@ -10,6 +10,8 @@ export const FOUNDER = {
   role: "Founder",
   country: "Nigeria",
   city: "Lagos",
+  /** Place your photo at public/images/founder.jpg */
+  image: "/images/founder.jpg",
 } as const;
 
 export const SITE_DESCRIPTION =
