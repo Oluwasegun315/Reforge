@@ -1,27 +1,29 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/seo";
 
+/** Public pages only — private app routes stay out of Google’s index. */
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-  const routes = [
-    "",
-    "/exercises",
-    "/workouts",
-    "/workouts/timer",
-    "/nutrition",
-    "/beginners",
-    "/dashboard",
-    "/progress",
-    "/profile",
-    "/settings",
-    "/auth/signin",
-    "/auth/signup",
+
+  const routes: {
+    path: string;
+    changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"];
+    priority: number;
+  }[] = [
+    { path: "", changeFrequency: "daily", priority: 1 },
+    { path: "/exercises", changeFrequency: "weekly", priority: 0.9 },
+    { path: "/workouts", changeFrequency: "weekly", priority: 0.9 },
+    { path: "/nutrition", changeFrequency: "weekly", priority: 0.85 },
+    { path: "/beginners", changeFrequency: "weekly", priority: 0.85 },
+    { path: "/workouts/timer", changeFrequency: "monthly", priority: 0.7 },
+    { path: "/auth/signup", changeFrequency: "monthly", priority: 0.6 },
+    { path: "/auth/signin", changeFrequency: "monthly", priority: 0.5 },
   ];
 
-  return routes.map((path) => ({
+  return routes.map(({ path, changeFrequency, priority }) => ({
     url: `${SITE_URL}${path}`,
     lastModified: now,
-    changeFrequency: path === "" ? "daily" : "weekly",
-    priority: path === "" ? 1 : path.startsWith("/auth") ? 0.5 : 0.8,
+    changeFrequency,
+    priority,
   }));
 }

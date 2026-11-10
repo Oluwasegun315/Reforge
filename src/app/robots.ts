@@ -7,8 +7,16 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/auth/callback", "/notifications/"],
+        disallow: [
+          "/auth/callback",
+          "/notifications/",
+          "/dashboard",
+          "/profile",
+          "/settings",
+          "/progress",
+        ],
       },
+
       {
         userAgent: "GPTBot",
         allow: "/",
