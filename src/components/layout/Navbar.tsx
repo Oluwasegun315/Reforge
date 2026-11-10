@@ -66,16 +66,6 @@ export function Navbar() {
           <span className="display-title text-lg sm:text-xl normal-case tracking-tight truncate">
             RepForge
           </span>
-          <span
-            className={cn(
-              "hidden md:inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider shrink-0",
-              inside
-                ? "bg-[var(--lime)] text-black"
-                : "border border-[var(--border-strong)] text-[var(--text-dim)]"
-            )}
-          >
-            {inside ? "Inside" : "Guest"}
-          </span>
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1 mx-auto" aria-label="Main">
@@ -143,14 +133,11 @@ export function Navbar() {
           className="lg:hidden border-t border-[var(--border)] bg-[var(--bg)] max-h-[min(70vh,28rem)] overflow-y-auto"
         >
           <nav className="container-page py-3 flex flex-col gap-1" aria-label="Mobile">
-            <p
-              className={cn(
-                "px-3 py-2 mb-1 rounded-lg text-xs font-semibold uppercase tracking-wider",
-                inside ? "bg-[var(--lime-dim)] text-[var(--lime)]" : "text-[var(--text-dim)]"
-              )}
-            >
-              {inside ? `Inside · ${auth.preferredName}` : "Guest mode"}
-            </p>
+            {inside && auth.preferredName ? (
+              <p className="px-3 py-2 mb-1 rounded-lg text-xs font-semibold text-[var(--lime)] bg-[var(--lime-dim)]">
+                {auth.preferredName}
+              </p>
+            ) : null}
             {links.map((link) => (
               <Link
                 key={link.href}

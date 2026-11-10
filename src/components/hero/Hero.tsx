@@ -52,15 +52,9 @@ export function Hero() {
       <div className="relative z-10 flex min-h-[100svh] items-end on-media">
         <div className="container-page w-full pb-20 pt-24 md:pb-20">
           <div className="max-w-3xl">
-            <div className="mb-4">
+            <div className="mb-5">
               <HeroFounderBadge />
             </div>
-            <p className="section-eyebrow mb-4 !text-zinc-200 drop-shadow-[0_2px_10px_rgba(0,0,0,0.85)]">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#c8ff3c]" aria-hidden />
-              {inside
-                ? `Signed in · Welcome back, ${first}`
-                : "Guest browsing · Ages 18+"}
-            </p>
             <h1
               id="hero-heading"
               className="display-title text-[clamp(2.4rem,9vw,5.8rem)] mb-5 text-white drop-shadow-[0_8px_32px_rgba(0,0,0,0.9)]"
