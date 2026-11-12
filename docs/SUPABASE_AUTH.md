@@ -56,10 +56,36 @@ If your Client Secret was shared in a screenshot, **reset/regenerate** it in Dis
 2. Paste Client ID + Client Secret
 3. Save
 
-## 5. How to know it worked
+## 5. Twitter / X auth checklist
 
-- Live signup page footer should **not** say social login is offline
-- **Continue with Discord** should open Discord (not a red “needs Supabase” message)
+Use **X / Twitter (OAuth 2.0)** in Supabase (recommended).
+
+### A) X Developer Portal — [developer.x.com](https://developer.x.com)
+
+1. Create/open a Project + App for RepForge  
+2. **User authentication settings → Set up**
+   - App type: **Web App**
+   - **Request email from users: ON**
+   - **Callback URL / Redirect URI (exact):**  
+     `https://aypkrbltklzgokurasdy.supabase.co/auth/v1/callback`
+   - **Website URL:**  
+     `https://oluwasegun-reforge.vercel.app`
+3. Save  
+4. Open **Keys and tokens** → copy **OAuth 2.0 Client ID** and **Client Secret**
+
+### B) Supabase → Authentication → Providers
+
+1. Open **X / Twitter (OAuth 2.0)** (not the old OAuth 1.0a if both appear)  
+2. Enable it  
+3. Paste Client ID + Client Secret  
+4. Save  
+
+No Vercel env change needed for Twitter (same Supabase keys already live).
+
+## 6. How to know it worked
+
+- Live signup shows “Secure sign-in connected…”
+- **Continue with Discord / Twitter / X** opens that provider
 - After approve, you land on `/auth/callback` → Dashboard
 
 ## Email note
