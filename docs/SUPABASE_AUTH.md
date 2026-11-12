@@ -56,7 +56,37 @@ If your Client Secret was shared in a screenshot, **reset/regenerate** it in Dis
 2. Paste Client ID + Client Secret
 3. Save
 
-## 5. Twitter / X auth checklist
+## 5. Google auth checklist
+
+### A) Google Cloud Console — [console.cloud.google.com](https://console.cloud.google.com)
+
+1. Create/select a project  
+2. **APIs & Services → OAuth consent screen**
+   - User type: **External**
+   - App name: `RepForge`
+   - User support email: your Gmail
+   - Developer contact: your Gmail
+   - Save  
+3. **APIs & Services → Credentials → Create Credentials → OAuth client ID**
+   - Application type: **Web application**
+   - Name: `RepForge Web`
+   - **Authorized JavaScript origins:**
+     - `https://oluwasegun-reforge.vercel.app`
+     - `http://127.0.0.1:3000`
+     - `http://localhost:3000`
+   - **Authorized redirect URIs:**
+     - `https://aypkrbltklzgokurasdy.supabase.co/auth/v1/callback`
+   - Create → copy **Client ID** and **Client Secret**
+
+### B) Supabase → Authentication → Providers → Google
+
+1. Enable Google  
+2. Paste Client ID + Client Secret  
+3. Save  
+
+Optional but useful: under Google provider, leave “Skip nonce check” off unless Google login fails with a nonce error.
+
+## 6. Twitter / X auth checklist
 
 Use **X / Twitter (OAuth 2.0)** in Supabase (recommended).
 
@@ -82,7 +112,7 @@ Use **X / Twitter (OAuth 2.0)** in Supabase (recommended).
 
 No Vercel env change needed for Twitter (same Supabase keys already live).
 
-## 6. How to know it worked
+## 7. How to know it worked
 
 - Live signup shows “Secure sign-in connected…”
 - **Continue with Discord / Twitter / X** opens that provider
