@@ -38,7 +38,7 @@ const display = Syne({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} — Fitness App by ${FOUNDER.name}`,
+    default: `${SITE_NAME} — Free Fitness App | Founded by ${FOUNDER.name}`,
     template: `%s · ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
@@ -56,28 +56,18 @@ export const metadata: Metadata = {
     locale: "en_NG",
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: `${SITE_NAME} — Build Your Best Self | Founded by ${FOUNDER.name}`,
+    title: `${SITE_NAME} — Stop waiting. Start forging.`,
     description: SITE_DESCRIPTION,
-    images: [
-      {
-        url: "/images/founder.jpg",
-        width: 1200,
-        height: 1200,
-        alt: `${FOUNDER.formalName} — Founder of ${SITE_NAME}`,
-      },
-      {
-        url: "/images/hero-man-poster.jpg",
-        width: 1200,
-        height: 630,
-        alt: `${SITE_NAME} fitness training — founded by ${FOUNDER.formalName}`,
-      },
-    ],
+    // opengraph-image.tsx supplies the branded 1200×630 preview Google/social use
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE_NAME} — Fitness by ${FOUNDER.name}`,
+    title: `${SITE_NAME} — Free Fitness for Nigeria & Beyond`,
     description: SITE_DESCRIPTION,
-    images: ["/images/founder.jpg"],
+  },
+  icons: {
+    icon: [{ url: "/icon", type: "image/png" }],
+    apple: [{ url: "/apple-icon", type: "image/png" }],
   },
   verification: {
     google: "gaQKUL56hVACLkD5kS2XFWc3yT5K2BNvI6JRaDr6fnI",
@@ -101,10 +91,6 @@ export const metadata: Metadata = {
     "AI-content":
       "RepForge fitness platform founded by Idowu Elijah Oluwasegun (IDOWU ELIJAH OLUWASEGUN), Lagos Nigeria",
     author: FOUNDER.formalName,
-  },
-  icons: {
-    icon: [{ url: "/icon", type: "image/png" }],
-    apple: [{ url: "/apple-icon", type: "image/png" }],
   },
 };
 

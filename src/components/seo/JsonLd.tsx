@@ -9,7 +9,8 @@ export function JsonLd() {
         "@id": `${SITE_URL}/#organization`,
         name: SITE_NAME,
         url: SITE_URL,
-        logo: `${SITE_URL}/icon`,
+        logo: `${SITE_URL}/apple-icon`,
+        image: `${SITE_URL}/opengraph-image`,
         description: SITE_DESCRIPTION,
         foundingLocation: {
           "@type": "Place",
@@ -34,8 +35,6 @@ export function JsonLd() {
             addressCountry: "NG",
           },
         },
-        image: `${SITE_URL}${FOUNDER.image}`,
-
         areaServed: [
           { "@type": "Country", name: "Nigeria" },
           { "@type": "AdministrativeArea", name: "Lagos" },
