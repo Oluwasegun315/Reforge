@@ -30,9 +30,10 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (keep example committed)
+# env files (keep example + public production Next vars committed)
 .env*
 !.env.example
+!.env.production
 
 # vercel
 .vercel
