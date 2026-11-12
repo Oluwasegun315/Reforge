@@ -13,7 +13,8 @@ const PROVIDERS: {
 }[] = [
   { id: "google", label: "Google", icon: <GoogleIcon /> },
   { id: "discord", label: "Discord", icon: <DiscordIcon /> },
-  { id: "twitter", label: "Twitter / X", icon: <TwitterIcon /> },
+  // Prefer X OAuth 2.0 (`x`) over legacy Twitter OAuth 1.0a (`twitter`)
+  { id: "x", label: "Twitter / X", icon: <TwitterIcon /> },
   { id: "github", label: "GitHub", icon: <GitHubIcon /> },
 ];
 
@@ -92,7 +93,7 @@ export function SocialAuthButtons({
 }
 
 function providerLabel(id: string) {
-  if (id === "twitter") return "Twitter / X";
+  if (id === "twitter" || id === "x") return "Twitter / X";
   return id.charAt(0).toUpperCase() + id.slice(1);
 }
 
