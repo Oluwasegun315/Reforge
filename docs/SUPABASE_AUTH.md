@@ -1,14 +1,11 @@
-# Connect Supabase backend to RepForge
+# Connect Supabase + Discord to RepForge
 
-## 1. Save your keys
-
-Open **`.env.local`** in the project root (already created for you).
+## 1. Local keys (`.env.local`)
 
 | What Supabase calls it | Paste into |
 | --- | --- |
 | Project URL | `NEXT_PUBLIC_SUPABASE_URL` |
-| **anon** / **public** / **publishable** key | `NEXT_PUBLIC_SUPABASE_ANON_KEY` |
-| service_role / secret access (optional) | `SUPABASE_SERVICE_ROLE_KEY` or `SUPABASE_ACCESS_TOKEN` |
+| **anon** / **public** key | `NEXT_PUBLIC_SUPABASE_ANON_KEY` |
 
 Also set:
 
@@ -16,51 +13,55 @@ Also set:
 NEXT_PUBLIC_SITE_URL=https://oluwasegun-reforge.vercel.app
 ```
 
-Notes:
+Restart `npm run dev` after saving.
 
-- **Anon = publishable** — one public key safe for the browser. Put it only in `NEXT_PUBLIC_SUPABASE_ANON_KEY`.
-- **service_role / access token** — secret. Never use `NEXT_PUBLIC_` for these.
-- `.env.local` is **gitignored** so keys stay on your machine.
+## 2. Vercel (required for live users)
 
-## 2. Supabase dashboard setup (required for Gmail)
+This is the #1 reason Discord shows “needs Supabase” on the live site.
 
-1. [supabase.com](https://supabase.com) → your project  
-2. **Authentication → URL Configuration**
-   - **Site URL (production):** `https://oluwasegun-reforge.vercel.app`
-   - **Redirect URLs** (add all of these):
-     - `https://oluwasegun-reforge.vercel.app/auth/callback`
-     - `http://127.0.0.1:3000/auth/callback`
-     - `http://localhost:3000/auth/callback`
-3. **Authentication → Providers → Email**
-   - Enable Email
-   - **Confirm email: ON** (so Gmail gets the confirmation link)
-4. Optional but strongly recommended for reliable Gmail delivery:
-   - **Project Settings → Auth → SMTP** — connect Resend, SendGrid, or Brevo
-   - Default Supabase mail often lands in **Spam / Promotions** and has hourly rate limits
-
-## 3. Vercel environment (required for live site)
-
-In Vercel → Project → **Settings → Environment Variables**, add for Production:
+In **Vercel → Project → Settings → Environment Variables** (Production + Preview):
 
 | Name | Value |
 | --- | --- |
-| `NEXT_PUBLIC_SUPABASE_URL` | your project URL |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | anon/public key |
+| `NEXT_PUBLIC_SUPABASE_URL` | `https://aypkrbltklzgokurasdy.supabase.co` |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | your anon/public key |
 | `NEXT_PUBLIC_SITE_URL` | `https://oluwasegun-reforge.vercel.app` |
 
-Then **Redeploy**. If these are missing, the confirm page shows “local only” and **no email is sent to Gmail**.
+Then **Deployments → … → Redeploy** (do not skip rebuild).
 
-## 4. Check it worked
+## 3. Supabase Auth URLs
 
-- Open the live site → Sign up with a real Gmail address  
-- Confirm page should offer **Open Gmail** + **Resend confirmation email** (not “local only”)  
-- Check Inbox **and Spam** for “Confirm your signup”  
-- Tap the link → you should land on `/auth/callback` then Dashboard  
+**Authentication → URL Configuration**
 
-Locally:
+- Site URL: `https://oluwasegun-reforge.vercel.app`
+- Redirect URLs:
+  - `https://oluwasegun-reforge.vercel.app/auth/callback`
+  - `http://127.0.0.1:3000/auth/callback`
+  - `http://localhost:3000/auth/callback`
 
-```bash
-npm run dev
-```
+## 4. Discord provider checklist
 
-Open http://127.0.0.1:3000/auth/signin — footer should say **Supabase connected**.
+### A) Discord Developer Portal → OAuth2
+
+1. Redirect URL (exact):
+   `https://aypkrbltklzgokurasdy.supabase.co/auth/v1/callback`
+2. **Public Client = OFF** (RepForge is a website; Supabase needs the Client Secret)
+3. Copy **Client ID** + **Client Secret** into Supabase
+
+If your Client Secret was shared in a screenshot, **reset/regenerate** it in Discord, then paste the new secret into Supabase.
+
+### B) Supabase → Authentication → Providers → Discord
+
+1. Enable Discord
+2. Paste Client ID + Client Secret
+3. Save
+
+## 5. How to know it worked
+
+- Live signup page footer should **not** say social login is offline
+- **Continue with Discord** should open Discord (not a red “needs Supabase” message)
+- After approve, you land on `/auth/callback` → Dashboard
+
+## Email note
+
+Email confirmation still needs Email provider ON in Supabase, and the same Vercel keys above.

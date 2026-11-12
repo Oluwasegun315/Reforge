@@ -33,7 +33,7 @@ export function SocialAuthButtons({
     if (!hasSupabaseCredentials()) {
       setLoading(null);
       onError(
-        `${providerLabel(provider)} login needs Supabase. Add keys to .env.local, enable ${providerLabel(provider)} under Authentication → Providers, then restart.`
+        `${providerLabel(provider)} sign-in is temporarily unavailable. The live site needs Supabase keys on Vercel (then redeploy).`
       );
       return;
     }
@@ -41,7 +41,7 @@ export function SocialAuthButtons({
     const supabase = createBrowserClient();
     if (!supabase) {
       setLoading(null);
-      onError("Could not start auth client. Check your Supabase env keys.");
+      onError("Could not start sign-in. Please try again in a moment.");
       return;
     }
 
@@ -49,12 +49,26 @@ export function SocialAuthButtons({
       provider,
       options: {
         redirectTo: getAuthRedirectUrl("/auth/callback"),
+        scopes: provider === "discord" ? "identify email" : undefined,
+        queryParams:
+          provider === "discord"
+            ? {
+                prompt: "consent",
+              }
+            : undefined,
       },
     });
 
     if (error) {
       setLoading(null);
-      onError(error.message);
+      const msg = error.message.toLowerCase();
+      if (msg.includes("provider is not enabled") || msg.includes("unsupported provider")) {
+        onError(
+          `${providerLabel(provider)} is not fully enabled in Supabase Auth yet. Ask the site owner to finish provider setup.`
+        );
+      } else {
+        onError(error.message);
+      }
     }
   };
 

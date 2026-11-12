@@ -371,8 +371,8 @@ export function AuthPanel({ mode }: { mode: AuthMode }) {
 
         <p className="text-xs text-[var(--text-dim)] leading-relaxed border-t border-[var(--border)] pt-3">
           {supabaseReady
-            ? "Supabase connected — enable Email + Google, Discord, Twitter, and GitHub under Authentication → Providers."
-            : "Cloud social login needs Supabase keys in .env.local. Email sign up / sign in works on this device after you confirm email."}
+            ? "Secure sign-in connected. Use email or a social account (Discord, Google, and more)."
+            : "Social login is offline on this deploy until Supabase keys are added in Vercel and the site is redeployed."}
         </p>
       </div>
 
