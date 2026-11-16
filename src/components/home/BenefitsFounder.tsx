@@ -110,7 +110,7 @@ export function BenefitsFounder() {
 
               <div className="flex flex-wrap gap-3">
                 <Link href="/session" className="btn-primary">
-                  Book 20-min founder session
+                  Talk with Founder · $50
                 </Link>
                 <Link href="/auth/signup" className="btn-secondary">
                   Start free with RepForge
@@ -119,6 +119,9 @@ export function BenefitsFounder() {
                   Beginner path
                 </Link>
               </div>
+              <p className="text-xs text-[var(--text-dim)]">
+                Available Monday, Tuesday, Friday · 20 minutes with {FOUNDER.formalName}
+              </p>
             </div>
           </div>
         </Card>

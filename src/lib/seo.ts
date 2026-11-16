@@ -49,6 +49,34 @@ export const SITE_KEYWORDS = [
 
 export const SESSION_URL = `${SITE_URL}/session`;
 
+export const FOUNDER_SESSION = {
+  durationMinutes: 20,
+  priceUsd: 50,
+  /** Framing: this is a real investment, not a free chat — still accessible vs gym coaches. */
+  entryBudgetUsd: 10,
+  availableDays: ["Monday", "Tuesday", "Friday"] as const,
+  currencyLabel: "USD $50",
+  tagline: "Private 20-minute guidance with the founder — clear next steps, not empty motivation.",
+  valueReasons: [
+    {
+      title: "Direct access to the founder",
+      body: "You speak with IDOWU ELIJAH OLUWASEGUN — the person who built RepForge for Nigerian life, not a random chatbot or junior coach.",
+    },
+    {
+      title: "A plan you can keep",
+      body: "In 20 minutes you leave with what to train, how often, and how to use RepForge so progress is real day by day.",
+    },
+    {
+      title: "Nigeria-aware advice",
+      body: "Home or gym, local food, busy weeks — guidance that fits your reality, not foreign influencer routines.",
+    },
+    {
+      title: "Worth more than a casual chat",
+      body: "A $10 mindset gets you scrolling. A $50 founder session buys focus, accountability, and a path you can follow this week.",
+    },
+  ],
+} as const;
+
 export const SESSION_FOCUS = [
   {
     id: "beginner",

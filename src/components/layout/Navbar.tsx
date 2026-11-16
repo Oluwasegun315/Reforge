@@ -87,6 +87,16 @@ export function Navbar() {
         </nav>
 
         <div className="hidden lg:flex items-center gap-2 shrink-0 ml-auto">
+          <Link
+            href="/session"
+            prefetch
+            className={cn(
+              "btn-primary !min-h-0 !py-2 !px-4 text-sm",
+              pathname === "/session" && "ring-2 ring-[var(--lime)] ring-offset-2 ring-offset-[var(--bg)]"
+            )}
+          >
+            Talk with Founder
+          </Link>
           <ThemeToggle />
           {inside && <NotificationBell />}
           {inside && auth.preferredName ? (
@@ -99,7 +109,7 @@ export function Navbar() {
               <Link
                 href="/auth/signup"
                 prefetch
-                className="btn-primary !min-h-0 !py-2 !px-4 text-sm"
+                className="btn-secondary !min-h-0 !py-2 !px-4 text-sm"
               >
                 Sign up
               </Link>
@@ -154,6 +164,14 @@ export function Navbar() {
                 {link.label}
               </Link>
             ))}
+            <Link
+              href="/session"
+              prefetch
+              onClick={() => setOpen(false)}
+              className="btn-primary mt-2"
+            >
+              Talk with Founder · $50
+            </Link>
             <div className="flex flex-col gap-2 mt-3 pt-3 border-t border-[var(--border)]">
               {inside ? (
                 <>
