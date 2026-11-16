@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FOUNDER, FOUNDER_SESSION, SESSION_URL } from "@/lib/seo";
+import { FOUNDER, FOUNDER_SESSION } from "@/lib/seo";
 
 export function Footer() {
   return (
@@ -13,20 +13,16 @@ export function Footer() {
                 20 minutes with {FOUNDER.formalName}
               </h2>
               <p className="text-sm md:text-base text-[var(--text-muted)] leading-relaxed">
-                {FOUNDER_SESSION.tagline} Available{" "}
+                {FOUNDER_SESSION.favourLine} Available{" "}
                 <strong className="text-[var(--text)]">
                   {FOUNDER_SESSION.availableDays.join(", ")}
-                </strong>
-                . Investment:{" "}
-                <strong className="text-[var(--lime)]">${FOUNDER_SESSION.priceUsd}</strong> —
-                built for people ready to move past a ${FOUNDER_SESSION.entryBudgetUsd} scroll
-                and get a real plan.
+                </strong>{" "}
+                on Zoom or Google Meet.
               </p>
-              <p className="text-xs text-[var(--text-dim)] break-all">Share: {SESSION_URL}</p>
             </div>
             <div className="flex flex-col sm:flex-row gap-2 shrink-0">
               <Link href="/session" className="btn-primary justify-center">
-                Talk with Founder · ${FOUNDER_SESSION.priceUsd}
+                {`Talk with Founder · $${FOUNDER_SESSION.collectUsd}`}
               </Link>
               <Link href="/#founder" className="btn-secondary justify-center">
                 About founder
@@ -120,15 +116,11 @@ export function Footer() {
             <ul className="space-y-2 text-sm text-[var(--text-muted)]">
               <li>
                 <Link href="/session" className="text-[var(--lime)] font-medium hover:underline">
-                  Book ${FOUNDER_SESSION.priceUsd} · 20 min
+                  {`Book $${FOUNDER_SESSION.collectUsd} · was $${FOUNDER_SESSION.priceUsd}`}
                 </Link>
               </li>
               <li>Mon · Tue · Fri</li>
-              <li>
-                <a href={SESSION_URL} className="hover:text-[var(--lime)] break-all text-xs">
-                  {SESSION_URL.replace("https://", "")}
-                </a>
-              </li>
+              <li>Zoom or Google Meet</li>
               <li>
                 <a href={`mailto:${FOUNDER.email}`} className="hover:text-[var(--lime)] break-all">
                   {FOUNDER.email}

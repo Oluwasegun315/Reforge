@@ -51,28 +51,33 @@ export const SESSION_URL = `${SITE_URL}/session`;
 
 export const FOUNDER_SESSION = {
   durationMinutes: 20,
+  /** Full session value shown as strikethrough / “was”. */
   priceUsd: 50,
-  /** Framing: this is a real investment, not a free chat — still accessible vs gym coaches. */
-  entryBudgetUsd: 10,
+  /** What users actually pay under the current founder favour. */
+  collectUsd: 10,
   availableDays: ["Monday", "Tuesday", "Friday"] as const,
-  currencyLabel: "USD $50",
-  tagline: "Private 20-minute guidance with the founder — clear next steps, not empty motivation.",
+  meetingPlatforms: ["Zoom", "Google Meet"] as const,
+  currencyLabel: "USD $10 (was $50)",
+  tagline:
+    "Private 20-minute guidance with the Founder & CEO — clear next steps, not empty motivation.",
+  favourLine:
+    "Normal session value is $50. Right now the Founder & CEO is doing you a real favour — you pay only $10 to talk with him live.",
   valueReasons: [
     {
-      title: "Direct access to the founder",
-      body: "You speak with IDOWU ELIJAH OLUWASEGUN — the person who built RepForge for Nigerian life, not a random chatbot or junior coach.",
+      title: "You talk to the Founder & CEO — not a junior coach",
+      body: "IDOWU ELIJAH OLUWASEGUN built RepForge. This is private access to the person behind the product — rare, personal, and worth far more than a $10 scroll.",
     },
     {
-      title: "A plan you can keep",
-      body: "In 20 minutes you leave with what to train, how often, and how to use RepForge so progress is real day by day.",
+      title: "A $50 session. You pay $10 today",
+      body: "He is discounting his time as a founder favour so serious users can get clarity without waiting. Treat it like an investment, not a free chat.",
     },
     {
-      title: "Nigeria-aware advice",
-      body: "Home or gym, local food, busy weeks — guidance that fits your reality, not foreign influencer routines.",
+      title: "Live on Zoom or Google Meet",
+      body: "Face-to-face video — you leave with what to train, how often, Nigeria-aware nutrition direction, and how RepForge keeps you consistent.",
     },
     {
-      title: "Worth more than a casual chat",
-      body: "A $10 mindset gets you scrolling. A $50 founder session buys focus, accountability, and a path you can follow this week.",
+      title: "One call can save months of guessing",
+      body: "Stuck beginners and returning lifters waste weeks on random plans. Twenty focused minutes with the CEO maps your next step this week.",
     },
   ],
 } as const;

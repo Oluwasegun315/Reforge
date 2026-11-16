@@ -11,6 +11,7 @@ import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { UserMenu } from "@/components/layout/UserMenu";
 import { useAuth } from "@/components/auth/AuthProvider";
 import { signOutUser } from "@/lib/auth-session";
+import { FOUNDER_SESSION } from "@/lib/seo";
 
 const guestLinks = [
   { href: "/exercises", label: "Exercises" },
@@ -86,35 +87,40 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden lg:flex items-center gap-2 shrink-0 ml-auto">
-          <Link
-            href="/session"
-            prefetch
-            className={cn(
-              "btn-primary !min-h-0 !py-2 !px-4 text-sm",
-              pathname === "/session" && "ring-2 ring-[var(--lime)] ring-offset-2 ring-offset-[var(--bg)]"
+        <div className="hidden lg:flex items-center shrink-0 ml-auto">
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            {inside && <NotificationBell />}
+            {inside && auth.preferredName ? (
+              <UserMenu preferredName={auth.preferredName} photoUrl={auth.photoUrl} />
+            ) : (
+              <>
+                <Link href="/auth/signin" prefetch className="btn-ghost !min-h-0 !py-2">
+                  Sign in
+                </Link>
+                <Link
+                  href="/auth/signup"
+                  prefetch
+                  className="btn-secondary !min-h-0 !py-2 !px-4 text-sm"
+                >
+                  Sign up
+                </Link>
+              </>
             )}
-          >
-            Talk with Founder
-          </Link>
-          <ThemeToggle />
-          {inside && <NotificationBell />}
-          {inside && auth.preferredName ? (
-            <UserMenu preferredName={auth.preferredName} photoUrl={auth.photoUrl} />
-          ) : (
-            <>
-              <Link href="/auth/signin" prefetch className="btn-ghost !min-h-0 !py-2">
-                Sign in
-              </Link>
-              <Link
-                href="/auth/signup"
-                prefetch
-                className="btn-secondary !min-h-0 !py-2 !px-4 text-sm"
-              >
-                Sign up
-              </Link>
-            </>
-          )}
+          </div>
+          <div className="ml-5 pl-5 border-l border-[var(--border-strong)]">
+            <Link
+              href="/session"
+              prefetch
+              className={cn(
+                "btn-primary !min-h-0 !py-2 !px-4 text-sm whitespace-nowrap",
+                pathname === "/session" &&
+                  "ring-2 ring-[var(--lime)] ring-offset-2 ring-offset-[var(--bg)]"
+              )}
+            >
+              Talk with Founder
+            </Link>
+          </div>
         </div>
 
         {/* Phone / tablet: icon theme + menu only — no cramped Sign in / full toggle */}
@@ -170,7 +176,7 @@ export function Navbar() {
               onClick={() => setOpen(false)}
               className="btn-primary mt-2"
             >
-              Talk with Founder · $50
+              {`Talk with Founder · $${FOUNDER_SESSION.collectUsd}`}
             </Link>
             <div className="flex flex-col gap-2 mt-3 pt-3 border-t border-[var(--border)]">
               {inside ? (

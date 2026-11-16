@@ -2,7 +2,7 @@ import Link from "next/link";
 import { CheckCircle2, Mail, Phone } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { FounderPhoto } from "@/components/home/FounderPhoto";
-import { BENEFITS, FOUNDER, SITE_NAME } from "@/lib/seo";
+import { BENEFITS, FOUNDER, FOUNDER_SESSION, SITE_NAME } from "@/lib/seo";
 
 export function BenefitsFounder() {
   return (
@@ -110,7 +110,7 @@ export function BenefitsFounder() {
 
               <div className="flex flex-wrap gap-3">
                 <Link href="/session" className="btn-primary">
-                  Talk with Founder · $50
+                  {`Talk with Founder · $${FOUNDER_SESSION.collectUsd}`}
                 </Link>
                 <Link href="/auth/signup" className="btn-secondary">
                   Start free with RepForge
