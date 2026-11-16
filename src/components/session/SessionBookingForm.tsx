@@ -5,9 +5,26 @@ import { MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { FOUNDER, FOUNDER_SESSION, SESSION_FOCUS } from "@/lib/seo";
 
+const COUNTRIES = [
+  "Nigeria",
+  "United States",
+  "United Kingdom",
+  "Canada",
+  "Ghana",
+  "South Africa",
+  "Kenya",
+  "Ireland",
+  "Germany",
+  "France",
+  "United Arab Emirates",
+  "India",
+  "Other",
+] as const;
+
 export function SessionBookingForm() {
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
+  const [country, setCountry] = useState<(typeof COUNTRIES)[number] | "">("");
   const [focus, setFocus] = useState<(typeof SESSION_FOCUS)[number]["id"]>("beginner");
   const [day, setDay] = useState<(typeof FOUNDER_SESSION.availableDays)[number]>("Monday");
   const [platform, setPlatform] =
@@ -28,7 +45,8 @@ export function SessionBookingForm() {
       `Session: ${FOUNDER_SESSION.durationMinutes} minutes · pay $${FOUNDER_SESSION.collectUsd} (normal value $${FOUNDER_SESSION.priceUsd})`,
       `Live call via: ${platform}`,
       `Name: ${name.trim() || "—"}`,
-      `WhatsApp/Phone: ${contact.trim() || "—"}`,
+      `Phone / WhatsApp number: ${contact.trim() || "—"}`,
+      `Country: ${country || "—"}`,
       `Focus: ${focusLabel}`,
       `Preferred day: ${day}`,
       `Preferred time: ${when.trim() || "Flexible"}`,
@@ -37,11 +55,11 @@ export function SessionBookingForm() {
       `I understand the normal session value is $${FOUNDER_SESSION.priceUsd}, and with your current founder favour I am ready to pay $${FOUNDER_SESSION.collectUsd} and confirm payment details with you.`,
     ];
     return `https://wa.me/${FOUNDER.whatsapp}?text=${encodeURIComponent(lines.join("\n"))}`;
-  }, [name, contact, focusLabel, day, when, goal, platform]);
+  }, [name, contact, country, focusLabel, day, when, goal, platform]);
 
   const submit = (event: FormEvent) => {
     event.preventDefault();
-    if (!name.trim() || !contact.trim() || !agreed) return;
+    if (!name.trim() || !contact.trim() || !country || !agreed) return;
     window.open(whatsappHref, "_blank", "noopener,noreferrer");
   };
 
@@ -60,18 +78,46 @@ export function SessionBookingForm() {
         />
       </label>
 
-      <label className="block space-y-1.5">
-        <span className="text-xs uppercase tracking-wider text-[var(--text-dim)] font-semibold">
-          WhatsApp / phone
-        </span>
-        <input
-          className="input-field"
-          value={contact}
-          onChange={(e) => setContact(e.target.value)}
-          placeholder="e.g. 0901…"
-          required
-        />
-      </label>
+      <div className="grid sm:grid-cols-2 gap-3">
+        <label className="block space-y-1.5">
+          <span className="text-xs uppercase tracking-wider text-[var(--text-dim)] font-semibold">
+            Phone / WhatsApp number
+          </span>
+          <input
+            className="input-field"
+            value={contact}
+            onChange={(e) => setContact(e.target.value)}
+            placeholder="Include country code if possible"
+            inputMode="tel"
+            autoComplete="tel"
+            required
+          />
+        </label>
+
+        <label className="block space-y-1.5">
+          <span className="text-xs uppercase tracking-wider text-[var(--text-dim)] font-semibold">
+            Country
+          </span>
+          <select
+            className="input-field"
+            value={country}
+            onChange={(e) => setCountry(e.target.value as (typeof COUNTRIES)[number] | "")}
+            required
+          >
+            <option value="" disabled>
+              Select your country
+            </option>
+            {COUNTRIES.map((c) => (
+              <option key={c} value={c}>
+                {c}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+      <p className="text-xs text-[var(--text-dim)] -mt-2">
+        Number + country help the founder know your timezone and how to attend the call.
+      </p>
 
       <fieldset className="space-y-2">
         <legend className="text-xs uppercase tracking-wider text-[var(--text-dim)] font-semibold mb-2">
@@ -168,7 +214,7 @@ export function SessionBookingForm() {
           className="input-field"
           value={when}
           onChange={(e) => setWhen(e.target.value)}
-          placeholder="e.g. 4:00pm WAT"
+          placeholder="e.g. 4:00pm your local time"
         />
       </label>
 
@@ -204,7 +250,11 @@ export function SessionBookingForm() {
         </span>
       </label>
 
-      <Button type="submit" className="w-full !min-h-[3.1rem] gap-2" disabled={!agreed}>
+      <Button
+        type="submit"
+        className="w-full !min-h-[3.1rem] gap-2"
+        disabled={!agreed || !country}
+      >
         <MessageCircle size={18} aria-hidden />
         Lock my ${FOUNDER_SESSION.collectUsd} founder slot on WhatsApp
       </Button>
