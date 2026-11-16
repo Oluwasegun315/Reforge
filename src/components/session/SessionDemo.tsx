@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Download, Pause, Play, Video } from "lucide-react";
+import { Pause, Play, Video } from "lucide-react";
 import { FOUNDER, FOUNDER_SESSION } from "@/lib/seo";
 
 type Cue = { start: number; end: number; speaker: string; line: string };
@@ -138,8 +138,6 @@ const DEMOS = [
     ] satisfies Cue[],
   },
 ] as const;
-
-const DEMOS_ZIP = "/downloads/talk-with-founder-demos.zip";
 
 function formatTime(seconds: number) {
   const s = Math.max(0, seconds);
@@ -355,27 +353,17 @@ function DemoPlayer({
 export function SessionDemo() {
   return (
     <section aria-labelledby="session-proof" className="space-y-5">
-      <div className="flex flex-col lg:flex-row lg:items-end gap-4 lg:justify-between">
-        <div className="max-w-3xl">
-          <p className="section-eyebrow mb-2">Simple path · Talk with Founder</p>
-          <h2 id="session-proof" className="display-title text-3xl md:text-4xl mb-3">
-            See the call. Book the call. Get your plan.
-          </h2>
-          <p className="text-[var(--text-muted)] leading-relaxed">
-            Watch how {FOUNDER.formalName} guides people in the UK, USA, and Nigeria — then secure
-            your own Zoom or Google Meet slot. Same founder access. Session valued at $
-            {FOUNDER_SESSION.priceUsd}; you pay{" "}
-            <strong className="text-[var(--lime)]">${FOUNDER_SESSION.collectUsd}</strong> today.
-          </p>
-        </div>
-        <a
-          href={DEMOS_ZIP}
-          download="talk-with-founder-sessions.zip"
-          className="btn-secondary !min-h-0 !py-2.5 !px-4 text-sm inline-flex items-center gap-2 shrink-0 self-start lg:self-auto"
-        >
-          <Download size={16} aria-hidden />
-          Download session videos
-        </a>
+      <div className="max-w-3xl">
+        <p className="section-eyebrow mb-2">Simple path · Talk with Founder</p>
+        <h2 id="session-proof" className="display-title text-3xl md:text-4xl mb-3">
+          See the call. Book the call. Get your plan.
+        </h2>
+        <p className="text-[var(--text-muted)] leading-relaxed">
+          Watch how {FOUNDER.formalName} guides people in the UK, USA, and Nigeria — then secure
+          your own Zoom or Google Meet slot. Same founder access. Session valued at $
+          {FOUNDER_SESSION.priceUsd}; you pay{" "}
+          <strong className="text-[var(--lime)]">${FOUNDER_SESSION.collectUsd}</strong> today.
+        </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 items-stretch">
