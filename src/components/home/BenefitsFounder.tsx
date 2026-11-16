@@ -68,6 +68,10 @@ export function BenefitsFounder() {
                   a reliable timer, and honest progress tracking, free-first for adults 18+ who want
                   to train at home or in the gym.
                 </p>
+                <p className="text-sm text-[var(--text-dim)] max-w-3xl leading-relaxed mt-3">
+                  Note: {SITE_NAME} Nigeria by {FOUNDER.name} is a fitness app. It is not related to
+                  Reforge.com (product courses) or other apps that reuse a similar name.
+                </p>
               </div>
 
               <div

@@ -21,23 +21,25 @@ export const FOUNDER = {
     "Life in Nigeria is not always easy. Many of us grow up surrounded by stress, long days, and food or habits that are not kind to our health. I built RepForge so people like me — and anyone who wants better — can still choose a healthier path: simple exercise that helps us look good, feel stronger, and stay fit on a daily basis, without needing an expensive gym membership just to begin.",
 } as const;
 
+/** Distinct from Reforge.com (PM courses) and other unrelated RepForge apps. */
 export const SITE_DESCRIPTION =
-  "RepForge is a free-first fitness and bodybuilding companion founded by Idowu Elijah Oluwasegun. Built for adults 18+ in Nigeria and worldwide — exercise demos, workout plans, Nigerian nutrition tips, a smart timer, and day-by-day progress tracking.";
+  "RepForge by Idowu Elijah Oluwasegun is a free-first fitness & bodybuilding web app for adults 18+ in Nigeria and worldwide. Exercise demos, workout plans, Nigerian nutrition, workout timer, and real day-by-day progress — not Reforge.com product courses.";
 
 export const SITE_KEYWORDS = [
   "RepForge",
+  "RepForge Nigeria",
+  "RepForge by Idowu Elijah Oluwasegun",
   "Idowu Elijah Oluwasegun",
   "IDOWU ELIJAH OLUWASEGUN",
+  "RepForge fitness app",
+  "RepForge Lagos",
+  "oluwasegun-reforge",
   "fitness app Nigeria",
   "bodybuilding Nigeria",
-  "workout planner",
-  "Nigerian nutrition",
-  "home gym workouts",
-  "beginner fitness",
-  "exercise library",
-  "workout timer",
-  "progress tracking",
-  "Lagos fitness",
+  "Nigerian nutrition workouts",
+  "home gym Nigeria",
+  "beginner fitness Nigeria",
+  "workout timer Nigeria",
   "RepForge founder",
 ] as const;
 

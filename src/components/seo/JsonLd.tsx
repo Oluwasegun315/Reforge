@@ -97,7 +97,8 @@ export function JsonLd() {
       {
         "@type": "SoftwareApplication",
         "@id": `${SITE_URL}/#app`,
-        name: SITE_NAME,
+        name: `${SITE_NAME} Nigeria`,
+        alternateName: ["RepForge", "RepForge by Idowu Elijah Oluwasegun"],
         applicationCategory: "HealthApplication",
         operatingSystem: "Web",
         url: SITE_URL,
@@ -148,8 +149,25 @@ export function JsonLd() {
               text: "Yes. RepForge includes Nigerian nutrition guidance and is built for adults training at home or in the gym across Nigeria and worldwide.",
             },
           },
+          {
+            "@type": "Question",
+            name: "Is RepForge the same as Reforge.com?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: `No. RepForge (https://oluwasegun-reforge.vercel.app) is a free fitness and bodybuilding web app founded by ${FOUNDER.formalName} in Lagos, Nigeria. Reforge.com is a separate product-management education company and is not related to this fitness app.`,
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How do I find RepForge by Idowu Elijah Oluwasegun on Google?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: `Search “RepForge Nigeria”, “RepForge Idowu Elijah Oluwasegun”, or open https://oluwasegun-reforge.vercel.app — that is the official site founded by ${FOUNDER.formalName}.`,
+            },
+          },
         ],
       },
+
       {
         "@type": "AboutPage",
         "@id": `${SITE_URL}/#about-founder`,

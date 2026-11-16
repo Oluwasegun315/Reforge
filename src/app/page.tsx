@@ -9,7 +9,7 @@ import { FOUNDER, SITE_DESCRIPTION, SITE_NAME } from "@/lib/seo";
 import { Timer, Dumbbell, LineChart, UtensilsCrossed } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: `${SITE_NAME} — Free Fitness App by ${FOUNDER.name}`,
+  title: `RepForge Nigeria — Free Fitness App by ${FOUNDER.name}`,
   description: SITE_DESCRIPTION,
   alternates: { canonical: "/" },
 };

@@ -38,14 +38,14 @@ const display = Syne({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} — Free Fitness App | Founded by ${FOUNDER.name}`,
-    template: `%s · ${SITE_NAME}`,
+    default: `RepForge Nigeria — Fitness App by ${FOUNDER.name} | Free Workouts`,
+    template: `%s · RepForge Nigeria`,
   },
   description: SITE_DESCRIPTION,
-  applicationName: SITE_NAME,
+  applicationName: `${SITE_NAME} Nigeria`,
   authors: [{ name: FOUNDER.name, url: `${SITE_URL}/#founder` }],
   creator: FOUNDER.name,
-  publisher: SITE_NAME,
+  publisher: `${SITE_NAME} by ${FOUNDER.name}`,
   keywords: [...SITE_KEYWORDS],
   category: "fitness",
   alternates: {
@@ -55,16 +55,17 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_NG",
     url: SITE_URL,
-    siteName: SITE_NAME,
-    title: `${SITE_NAME} — Stop waiting. Start forging.`,
+    siteName: `${SITE_NAME} Nigeria`,
+    title: `RepForge Nigeria by ${FOUNDER.name} — Free Fitness App`,
     description: SITE_DESCRIPTION,
     // opengraph-image.tsx supplies the branded 1200×630 preview Google/social use
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE_NAME} — Free Fitness for Nigeria & Beyond`,
+    title: `RepForge Nigeria — Fitness by ${FOUNDER.name}`,
     description: SITE_DESCRIPTION,
   },
+
   icons: {
     icon: [{ url: "/icon", type: "image/png" }],
     apple: [{ url: "/apple-icon", type: "image/png" }],

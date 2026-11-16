@@ -45,24 +45,23 @@ export default function OpenGraphImage() {
             <div style={{ width: 28, height: 10, background: "#0b0b0c", borderRadius: 4 }} />
             <div style={{ width: 14, height: 36, background: "#0b0b0c", borderRadius: 4 }} />
           </div>
-          <div style={{ fontSize: 42, fontWeight: 800, letterSpacing: -1 }}>RepForge</div>
+          <div style={{ fontSize: 42, fontWeight: 800, letterSpacing: -1 }}>RepForge Nigeria</div>
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
           <div
             style={{
-              fontSize: 64,
+              fontSize: 58,
               fontWeight: 800,
               lineHeight: 1.05,
               letterSpacing: -2,
               maxWidth: 980,
             }}
           >
-            Stop waiting. Start forging.
+            Free fitness app by Idowu Elijah Oluwasegun
           </div>
-          <div style={{ fontSize: 28, color: "#a1a1aa", maxWidth: 900, lineHeight: 1.35 }}>
-            Free-first fitness for adults 18+ — exercises, workouts, Nigerian nutrition, timer &
-            progress.
+          <div style={{ fontSize: 26, color: "#a1a1aa", maxWidth: 900, lineHeight: 1.35 }}>
+            Workouts, Nigerian nutrition, timer & progress — not Reforge.com product courses.
           </div>
         </div>
 
