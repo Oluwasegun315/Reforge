@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ArrowLeft, Bell } from "lucide-react";
+import { ArrowLeft, Bell, Dumbbell, Salad, Timer, Zap } from "lucide-react";
 import { notificationsStore, type AppNotification } from "@/lib/notifications";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
@@ -26,7 +26,7 @@ export default function NotificationDetailPage() {
         <Card className="!p-6 space-y-4 text-center">
           <h1 className="display-title text-3xl">Alert not found</h1>
           <p className="text-sm text-[var(--text-muted)]">
-            This notification may have been cleared. Open the bell for current alerts.
+            This training alert may have been cleared. Open the bell for current alerts.
           </p>
           <Link href="/dashboard" className="btn-primary inline-flex">
             Back to dashboard
@@ -36,6 +36,24 @@ export default function NotificationDetailPage() {
     );
   }
 
+  const kindLabel =
+    item.kind === "reminder"
+      ? "Training reminder"
+      : item.kind === "tip"
+        ? "Fuel tip"
+        : item.kind === "workout"
+          ? "Workout"
+          : "Update";
+
+  const Icon =
+    item.kind === "reminder"
+      ? Timer
+      : item.kind === "tip"
+        ? Salad
+        : item.kind === "workout"
+          ? Dumbbell
+          : Zap;
+
   return (
     <div className="container-page py-10 md:py-14 max-w-2xl">
       <Link
@@ -43,27 +61,34 @@ export default function NotificationDetailPage() {
         className="inline-flex items-center gap-2 text-sm text-[var(--text-muted)] hover:text-[var(--lime)] mb-6"
       >
         <ArrowLeft size={16} aria-hidden />
-        Back
+        Back to training
       </Link>
 
-      <Card className="!p-6 md:!p-8 space-y-5">
+      <Card
+        className="!p-6 md:!p-8 space-y-5 border-[rgba(200,255,60,0.22)]"
+        style={{
+          background:
+            "linear-gradient(160deg, rgba(200,255,60,0.08), transparent 45%), var(--bg-card)",
+        }}
+      >
         <div className="flex items-start gap-3">
-          <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-[var(--lime-dim)] text-[var(--lime)]">
-            <Bell size={20} aria-hidden />
+          <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--lime-dim)] text-[var(--lime)] border border-[rgba(200,255,60,0.3)]">
+            <Icon size={22} aria-hidden />
           </span>
-          <div>
+          <div className="min-w-0">
             <p className="text-xs uppercase tracking-wider text-[var(--text-dim)] mb-1">
-              {item.kind ?? "alert"} · {new Date(item.createdAt).toLocaleString()}
+              {kindLabel} · {new Date(item.createdAt).toLocaleString()}
             </p>
-            <h1 className="display-title text-3xl md:text-4xl">{item.title}</h1>
+            <h1 className="display-title text-3xl md:text-4xl leading-none">{item.title}</h1>
           </div>
         </div>
 
-        <p className="text-[var(--text-muted)] leading-relaxed">{item.body}</p>
+        <p className="text-[var(--text-muted)] leading-relaxed text-base">{item.body}</p>
 
-        <div className="rounded-xl border border-[var(--border)] bg-[var(--bg-elevated)] p-4">
-          <p className="text-xs uppercase tracking-wider text-[var(--cyan)] font-semibold mb-2">
-            Full details
+        <div className="rounded-2xl border border-[var(--border)] bg-[var(--bg)]/55 p-4 md:p-5">
+          <p className="text-xs uppercase tracking-wider text-[var(--lime)] font-semibold mb-2 inline-flex items-center gap-1.5">
+            <Bell size={12} aria-hidden />
+            Coach note
           </p>
           <p className="text-sm text-[var(--text)] leading-relaxed whitespace-pre-line">
             {item.detail || item.body}
@@ -73,7 +98,7 @@ export default function NotificationDetailPage() {
         <div className="flex flex-wrap gap-3">
           {item.href && (
             <Link href={item.href} className="btn-primary">
-              Open related page
+              Take action
             </Link>
           )}
           <Link href="/workouts/timer" className="btn-secondary">
