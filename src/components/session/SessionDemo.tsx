@@ -6,6 +6,10 @@ import { FOUNDER, FOUNDER_SESSION } from "@/lib/seo";
 
 type Cue = { start: number; end: number; speaker: string; line: string };
 
+/**
+ * Cue timing is matched to visible speaker action in each clip
+ * (mouth open / gesturing / writing / listening / closing smile).
+ */
 const DEMOS = [
   {
     id: "zoom-uk",
@@ -19,33 +23,33 @@ const DEMOS = [
     cues: [
       {
         start: 0,
-        end: 2.8,
+        end: 3.1,
         speaker: "Founder",
-        line: "James, tell me where training keeps falling off for you.",
+        line: "James — where does your training keep falling off each week?",
       },
       {
-        start: 2.8,
-        end: 5.6,
+        start: 3.1,
+        end: 5.8,
         speaker: "Client",
-        line: "I start strong, then miss days — and I want real muscle, not tiny gains.",
+        line: "I start strong, then miss days. I want real muscle, not tiny gains.",
       },
       {
-        start: 5.6,
-        end: 8.8,
+        start: 5.8,
+        end: 8.9,
         speaker: "Founder",
-        line: "Good. We build a plan you can keep — three solid days, clear focus.",
+        line: "We fix that with three solid days and a plan you can keep.",
       },
       {
-        start: 8.8,
-        end: 12,
+        start: 8.9,
+        end: 12.1,
         speaker: "Client",
         line: "That already feels clearer than anything I tried alone.",
       },
       {
-        start: 12,
+        start: 12.1,
         end: 15.1,
         speaker: "Founder",
-        line: "Perfect. Use RepForge this week — I will check your next steps.",
+        line: "Perfect. Use RepForge this week — you are set.",
       },
     ] satisfies Cue[],
   },
@@ -61,33 +65,33 @@ const DEMOS = [
     cues: [
       {
         start: 0,
-        end: 2.8,
+        end: 2.9,
         speaker: "Founder",
-        line: "Sarah, what do you want from this call — say it plainly.",
+        line: "Sarah, I am ready with my notebook — tell me what you need.",
       },
       {
-        start: 2.8,
-        end: 5.8,
+        start: 2.9,
+        end: 6.2,
         speaker: "Client",
         line: "Consistency. I keep starting over and I need a plan that sticks.",
       },
       {
-        start: 5.8,
-        end: 9,
+        start: 6.2,
+        end: 10.2,
         speaker: "Founder",
-        line: "I am writing that down. We lock days, meals, and one weekly check-in.",
+        line: "Noted. We lock training days, simple meals, and one weekly check-in.",
       },
       {
-        start: 9,
-        end: 12.2,
+        start: 10.2,
+        end: 12.8,
         speaker: "Client",
         line: "Yes — that is exactly what I needed to hear.",
       },
       {
-        start: 12.2,
+        start: 12.8,
         end: 15.1,
         speaker: "Founder",
-        line: "Great. You leave with next steps — not more confusion.",
+        line: "Good. You leave with clear next steps today.",
       },
     ] satisfies Cue[],
   },
@@ -103,33 +107,33 @@ const DEMOS = [
     cues: [
       {
         start: 0,
-        end: 2.8,
+        end: 3.4,
         speaker: "Founder",
-        line: "Brother, what is blocking you from staying consistent in Lagos?",
+        line: "Brother — what is blocking you from staying consistent in Lagos?",
       },
       {
-        start: 2.8,
-        end: 5.8,
+        start: 3.4,
+        end: 6.8,
         speaker: "Client",
-        line: "Work, traffic, and food — I need a home plan I can actually keep.",
+        line: "Work, traffic, and food. I need a home plan I can keep.",
       },
       {
-        start: 5.8,
-        end: 9,
+        start: 6.8,
+        end: 10.4,
         speaker: "Founder",
-        line: "We fix that. Short sessions, local plates, and a simple weekly rhythm.",
+        line: "Short home sessions, local plates, and a simple weekly rhythm.",
       },
       {
-        start: 9,
-        end: 12.2,
+        start: 10.4,
+        end: 13,
         speaker: "Client",
-        line: "That makes sense. I can do this without an expensive gym first.",
+        line: "That makes sense. I can start without an expensive gym.",
       },
       {
-        start: 12.2,
+        start: 13,
         end: 15.1,
         speaker: "Founder",
-        line: "Exactly. Start this week — RepForge will keep you on track.",
+        line: "Exactly. Start this week — RepForge keeps you on track.",
       },
     ] satisfies Cue[],
   },
@@ -169,7 +173,10 @@ function DemoPlayer({
   const progress = duration > 0 ? Math.min(1, current / duration) : 0;
   const remaining = Math.max(0, duration - current);
   const endingSoon = playing && remaining > 0 && remaining <= 3.2;
-  const activeCue = cues.find((c) => current >= c.start && current < c.end) ?? null;
+  const activeCue =
+    playing || current > 0.05
+      ? cues.find((c) => current >= c.start && current < c.end) ?? null
+      : null;
 
   useEffect(() => {
     const el = videoRef.current;
@@ -247,7 +254,6 @@ function DemoPlayer({
           <track kind="captions" srcLang="en" label="English" src={captions} />
         </video>
 
-        {/* Center play / pause */}
         <button
           type="button"
           onClick={toggle}
@@ -269,37 +275,26 @@ function DemoPlayer({
           </span>
         </button>
 
-        {/* Movie-style ending soon badge */}
         {endingSoon ? (
           <div className="pointer-events-none absolute top-3 right-3 z-[3] rounded-full border border-[rgba(200,255,60,0.45)] bg-black/70 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[var(--lime)] backdrop-blur-sm animate-pulse">
             Ending soon · {formatTime(remaining)}
           </div>
         ) : null}
 
-        {/* English subtitles overlay */}
-        {playing && activeCue ? (
-          <div className="pointer-events-none absolute inset-x-0 bottom-[2.85rem] z-[3] px-3 flex justify-center">
-            <p className="max-w-[95%] rounded-md bg-black/78 px-3 py-1.5 text-center text-[11px] sm:text-xs leading-snug text-white shadow-lg">
-              <span className="font-bold text-[var(--lime)]">{activeCue.speaker}: </span>
-              {activeCue.line}
-            </p>
-          </div>
-        ) : null}
-
-        {/* Movie timeline / progress (visible while playing or hovering) */}
+        {/* Movie timeline only — no subtitle overlay on faces */}
         <div
-          className={`absolute inset-x-0 bottom-0 z-[4] bg-gradient-to-t from-black/90 via-black/55 to-transparent px-3 pt-8 pb-2.5 transition ${
+          className={`absolute inset-x-0 bottom-0 z-[4] bg-gradient-to-t from-black/85 via-black/40 to-transparent px-3 pt-6 pb-2 transition ${
             playing ? "opacity-100" : "opacity-0 group-hover:opacity-100"
           }`}
         >
-          <div className="flex items-center justify-between gap-2 mb-1.5 text-[10px] font-semibold tracking-wide text-white/75">
+          <div className="flex items-center justify-between gap-2 mb-1 text-[10px] font-semibold tracking-wide text-white/75">
             <span>{formatTime(current)}</span>
             <span className={endingSoon ? "text-[var(--lime)]" : ""}>
               {endingSoon ? "Almost finished" : formatTime(duration)}
             </span>
           </div>
           <div
-            className="relative h-1.5 rounded-full bg-white/20 cursor-pointer group/bar"
+            className="relative h-1.5 rounded-full bg-white/20 cursor-pointer"
             role="slider"
             aria-label="Video progress"
             aria-valuemin={0}
@@ -316,7 +311,7 @@ function DemoPlayer({
             }}
           >
             <div
-              className="absolute inset-y-0 left-0 rounded-full bg-[var(--lime)] transition-[width] duration-100"
+              className="absolute inset-y-0 left-0 rounded-full bg-[var(--lime)]"
               style={{ width: `${progress * 100}%` }}
             />
             <span
@@ -325,6 +320,23 @@ function DemoPlayer({
             />
           </div>
         </div>
+      </div>
+
+      {/* Subtitles sit under the video — never cover faces, notebook, or call UI */}
+      <div
+        className="min-h-[3.35rem] px-3 py-2 border-t border-white/10 bg-[#0c0c0e] flex items-center justify-center"
+        aria-live="polite"
+      >
+        {activeCue ? (
+          <p className="text-center text-[11px] sm:text-xs leading-snug text-white/90">
+            <span className="font-bold text-[var(--lime)]">{activeCue.speaker}: </span>
+            {activeCue.line}
+          </p>
+        ) : (
+          <p className="text-center text-[10px] text-white/35">
+            {playing ? "…" : "Press play for English subtitles"}
+          </p>
+        )}
       </div>
 
       <div className="flex flex-col gap-3 px-3 sm:px-4 py-3 border-t border-white/10 bg-[#121214] flex-1">
