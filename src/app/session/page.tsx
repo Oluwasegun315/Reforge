@@ -67,7 +67,7 @@ export default function SessionPage() {
         aria-hidden
       />
 
-      <div className="relative container-page py-10 md:py-16 space-y-10 md:space-y-14 max-w-5xl mx-auto">
+      <div className="relative container-page py-10 md:py-16 space-y-10 md:space-y-14 max-w-6xl mx-auto">
         <header className="grid lg:grid-cols-[1.15fr_0.85fr] gap-8 items-end">
           <div className="space-y-5">
             <p className="section-eyebrow">Talk with Founder · Limited favour</p>

@@ -6,7 +6,7 @@ import { FOUNDER, FOUNDER_SESSION } from "@/lib/seo";
 
 const DEMOS = [
   {
-    id: "zoom",
+    id: "zoom-uk",
     platform: "Zoom",
     src: "/videos/founder-session-demo.mp4",
     label: "Zoom · UK client",
@@ -14,12 +14,20 @@ const DEMOS = [
       "UK client (40+) stuck on daily consistency and real muscle — left with a plan he could keep.",
   },
   {
-    id: "meet",
+    id: "meet-usa",
     platform: "Google Meet",
     src: "/videos/founder-google-meet-usa.mp4",
     label: "Google Meet · USA client",
     blurb:
       "USA client on Google Meet while the founder jots her words in a notebook — clarity, then next steps.",
+  },
+  {
+    id: "zoom-ng",
+    platform: "Zoom",
+    src: "/videos/founder-zoom-nigeria.mp4",
+    label: "Zoom · Nigeria client",
+    blurb:
+      "Nigeria client mapping a home plan that fits Lagos life — local food, busy weeks, real progress.",
   },
 ] as const;
 
@@ -119,20 +127,18 @@ export function SessionDemo() {
   return (
     <section aria-labelledby="session-demo" className="space-y-5">
       <div className="max-w-3xl">
-        <p className="section-eyebrow mb-2">2 live demos · side by side</p>
+        <p className="section-eyebrow mb-2">3 live demos · side by side</p>
         <h2 id="session-demo" className="display-title text-3xl md:text-4xl mb-3">
-          Zoom + Google Meet with the founder
+          UK · USA · Nigeria with the founder
         </h2>
         <p className="text-[var(--text-muted)] leading-relaxed">
-          Left: Zoom with a UK client. Right: Google Meet with a USA client while{" "}
-          {FOUNDER.formalName} notes her goals. Valued at ${FOUNDER_SESSION.priceUsd} — founder
-          favour{" "}
+          Three real-feel sessions with {FOUNDER.formalName}: Zoom (UK), Google Meet (USA), and
+          Zoom (Nigeria). Valued at ${FOUNDER_SESSION.priceUsd} — founder favour{" "}
           <strong className="text-[var(--lime)]">${FOUNDER_SESSION.collectUsd}</strong>.
         </p>
       </div>
 
-      {/* Always two columns from tablet up so both videos are visible together */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5 items-stretch">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 items-stretch">
         {DEMOS.map((demo) => (
           <DemoPlayer key={demo.id} {...demo} />
         ))}
