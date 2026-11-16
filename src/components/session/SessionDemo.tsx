@@ -101,7 +101,7 @@ function DemoPlayer({
           className={`absolute inset-0 flex items-center justify-center transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-[var(--lime)] ${
             playing ? "bg-transparent" : "bg-black/25 hover:bg-black/35"
           }`}
-          aria-label={playing ? `Pause ${platform} demo` : `Play ${platform} demo`}
+          aria-label={playing ? `Pause ${platform} session` : `Play ${platform} session`}
         >
           <span
             className={`inline-flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-[var(--lime)] text-black shadow-lg transition ${
@@ -132,26 +132,27 @@ function DemoPlayer({
 
 export function SessionDemo() {
   return (
-    <section aria-labelledby="session-demo" className="space-y-5">
+    <section aria-labelledby="session-proof" className="space-y-5">
       <div className="flex flex-col lg:flex-row lg:items-end gap-4 lg:justify-between">
         <div className="max-w-3xl">
-          <p className="section-eyebrow mb-2">3 live demos · side by side</p>
-          <h2 id="session-demo" className="display-title text-3xl md:text-4xl mb-3">
-            UK · USA · Nigeria with the founder
+          <p className="section-eyebrow mb-2">Simple path · Talk with Founder</p>
+          <h2 id="session-proof" className="display-title text-3xl md:text-4xl mb-3">
+            See the call. Book the call. Get your plan.
           </h2>
           <p className="text-[var(--text-muted)] leading-relaxed">
-            Three real-feel sessions with {FOUNDER.formalName}: Zoom (UK), Google Meet (USA), and
-            Zoom (Nigeria). Valued at ${FOUNDER_SESSION.priceUsd} — founder favour{" "}
-            <strong className="text-[var(--lime)]">${FOUNDER_SESSION.collectUsd}</strong>.
+            Watch how {FOUNDER.formalName} guides people in the UK, USA, and Nigeria — then secure
+            your own Zoom or Google Meet slot. Same founder access. Session valued at $
+            {FOUNDER_SESSION.priceUsd}; you pay{" "}
+            <strong className="text-[var(--lime)]">${FOUNDER_SESSION.collectUsd}</strong> today.
           </p>
         </div>
         <a
           href={DEMOS_ZIP}
-          download="talk-with-founder-demos.zip"
+          download="talk-with-founder-sessions.zip"
           className="btn-secondary !min-h-0 !py-2.5 !px-4 text-sm inline-flex items-center gap-2 shrink-0 self-start lg:self-auto"
         >
           <Download size={16} aria-hidden />
-          Download all 3 videos
+          Download session videos
         </a>
       </div>
 
