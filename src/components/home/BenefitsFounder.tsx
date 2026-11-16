@@ -109,15 +109,15 @@ export function BenefitsFounder() {
               </div>
 
               <div className="flex flex-wrap gap-3">
-                <Link href="/auth/signup" className="btn-primary">
+                <Link href="/session" className="btn-primary">
+                  Book 20-min founder session
+                </Link>
+                <Link href="/auth/signup" className="btn-secondary">
                   Start free with RepForge
                 </Link>
                 <Link href="/beginners" className="btn-secondary">
                   Beginner path
                 </Link>
-                <a href={`mailto:${FOUNDER.email}`} className="btn-secondary">
-                  Email founder
-                </a>
               </div>
             </div>
           </div>

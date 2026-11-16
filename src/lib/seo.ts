@@ -17,13 +17,15 @@ export const FOUNDER = {
     { label: "MTN", number: "09169540998", href: "tel:+2349169540998" },
     { label: "Airtel", number: "09075288805", href: "tel:+2349075288805" },
   ],
+  whatsapp: "2349169540998",
   story:
     "Life in Nigeria is not always easy. Many of us grow up surrounded by stress, long days, and food or habits that are not kind to our health. I built RepForge so people like me — and anyone who wants better — can still choose a healthier path: simple exercise that helps us look good, feel stronger, and stay fit on a daily basis, without needing an expensive gym membership just to begin.",
+  driveShort:
+    "Built so Nigerians can choose healthy daily exercise — look good, feel stronger, and stay fit without an expensive gym just to begin.",
 } as const;
 
 /** Distinct from Reforge.com (PM courses) and other unrelated RepForge apps. */
-export const SITE_DESCRIPTION =
-  "RepForge by Idowu Elijah Oluwasegun is a free-first fitness & bodybuilding web app for adults 18+ in Nigeria and worldwide. Exercise demos, workout plans, Nigerian nutrition, workout timer, and real day-by-day progress — not Reforge.com product courses.";
+export const SITE_DESCRIPTION = `IDOWU ELIJAH OLUWASEGUN founded RepForge Nigeria — free fitness for adults 18+. ${FOUNDER.driveShort} Workouts, Nigerian nutrition, timer & progress.`;
 
 export const SITE_KEYWORDS = [
   "RepForge",
@@ -31,6 +33,7 @@ export const SITE_KEYWORDS = [
   "RepForge by Idowu Elijah Oluwasegun",
   "Idowu Elijah Oluwasegun",
   "IDOWU ELIJAH OLUWASEGUN",
+  "Idowu Oluwasegun fitness",
   "RepForge fitness app",
   "RepForge Lagos",
   "oluwasegun-reforge",
@@ -41,6 +44,32 @@ export const SITE_KEYWORDS = [
   "beginner fitness Nigeria",
   "workout timer Nigeria",
   "RepForge founder",
+  "RepForge founder session",
+] as const;
+
+export const SESSION_URL = `${SITE_URL}/session`;
+
+export const SESSION_FOCUS = [
+  {
+    id: "beginner",
+    title: "Beginner start",
+    body: "Where to begin, safe form, and a simple weekly rhythm.",
+  },
+  {
+    id: "plan",
+    title: "Build your plan",
+    body: "Goals, available days, home vs gym — a plan you can keep.",
+  },
+  {
+    id: "nutrition",
+    title: "Nigeria nutrition",
+    body: "Local plates, budget protein, and habits that support training.",
+  },
+  {
+    id: "consistency",
+    title: "Stay consistent",
+    body: "Streaks, recovery days, and how to use RepForge every week.",
+  },
 ] as const;
 
 export const BENEFITS = [

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FOUNDER } from "@/lib/seo";
+import { FOUNDER, SESSION_URL } from "@/lib/seo";
 
 export function Footer() {
   return (
@@ -87,6 +87,16 @@ export function Footer() {
         <div>
           <p className="font-semibold mb-3">Contact</p>
           <ul className="space-y-2 text-sm text-[var(--text-muted)]">
+            <li>
+              <Link href="/session" className="hover:text-[var(--lime)] font-medium text-[var(--lime)]">
+                Book 20-min session
+              </Link>
+            </li>
+            <li>
+              <a href={SESSION_URL} className="hover:text-[var(--lime)] break-all text-xs">
+                Share link
+              </a>
+            </li>
             <li>
               <Link href="/#founder" className="hover:text-[var(--lime)]">
                 About founder

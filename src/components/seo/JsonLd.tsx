@@ -165,8 +165,25 @@ export function JsonLd() {
               text: `Search “RepForge Nigeria”, “RepForge Idowu Elijah Oluwasegun”, or open https://oluwasegun-reforge.vercel.app — that is the official site founded by ${FOUNDER.formalName}.`,
             },
           },
+          {
+            "@type": "Question",
+            name: "Can I book a session with Idowu Elijah Oluwasegun?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: `Yes. Book a 20-minute founder guidance session at ${SITE_URL}/session. ${FOUNDER.formalName} helps with beginner plans, Nigerian nutrition direction, consistency, and how to use RepForge.`,
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Why did Idowu Elijah Oluwasegun build RepForge?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: FOUNDER.driveShort,
+            },
+          },
         ],
       },
+
 
       {
         "@type": "AboutPage",

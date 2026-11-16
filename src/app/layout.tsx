@@ -38,8 +38,8 @@ const display = Syne({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `RepForge Nigeria — Fitness App by ${FOUNDER.name} | Free Workouts`,
-    template: `%s · RepForge Nigeria`,
+    default: `${FOUNDER.formalName} — RepForge Nigeria Fitness App`,
+    template: `%s · ${FOUNDER.name}`,
   },
   description: SITE_DESCRIPTION,
   applicationName: `${SITE_NAME} Nigeria`,
@@ -56,15 +56,16 @@ export const metadata: Metadata = {
     locale: "en_NG",
     url: SITE_URL,
     siteName: `${SITE_NAME} Nigeria`,
-    title: `RepForge Nigeria by ${FOUNDER.name} — Free Fitness App`,
+    title: `${FOUNDER.formalName} — RepForge Nigeria | Free Fitness`,
     description: SITE_DESCRIPTION,
     // opengraph-image.tsx supplies the branded 1200×630 preview Google/social use
   },
   twitter: {
     card: "summary_large_image",
-    title: `RepForge Nigeria — Fitness by ${FOUNDER.name}`,
+    title: `${FOUNDER.formalName} — RepForge Nigeria Fitness`,
     description: SITE_DESCRIPTION,
   },
+
 
   icons: {
     icon: [{ url: "/icon", type: "image/png" }],

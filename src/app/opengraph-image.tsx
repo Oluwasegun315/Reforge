@@ -45,29 +45,30 @@ export default function OpenGraphImage() {
             <div style={{ width: 28, height: 10, background: "#0b0b0c", borderRadius: 4 }} />
             <div style={{ width: 14, height: 36, background: "#0b0b0c", borderRadius: 4 }} />
           </div>
-          <div style={{ fontSize: 42, fontWeight: 800, letterSpacing: -1 }}>RepForge Nigeria</div>
+          <div style={{ fontSize: 40, fontWeight: 800, letterSpacing: -1 }}>RepForge Nigeria</div>
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
           <div
             style={{
-              fontSize: 58,
+              fontSize: 52,
               fontWeight: 800,
               lineHeight: 1.05,
               letterSpacing: -2,
               maxWidth: 980,
             }}
           >
-            Free fitness app by Idowu Elijah Oluwasegun
+            IDOWU ELIJAH OLUWASEGUN
           </div>
-          <div style={{ fontSize: 26, color: "#a1a1aa", maxWidth: 900, lineHeight: 1.35 }}>
-            Workouts, Nigerian nutrition, timer & progress — not Reforge.com product courses.
+          <div style={{ fontSize: 26, color: "#a1a1aa", maxWidth: 920, lineHeight: 1.35 }}>
+            Built so Nigerians can choose healthy daily exercise — look good, feel stronger, stay
+            fit without an expensive gym just to begin.
           </div>
         </div>
 
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
           <div style={{ fontSize: 22, color: "#c8ff3c", fontWeight: 700 }}>
-            Founded by IDOWU ELIJAH OLUWASEGUN
+            Free fitness app · Founder sessions available
           </div>
           <div style={{ fontSize: 20, color: "#71717a" }}>Lagos, Nigeria</div>
         </div>
