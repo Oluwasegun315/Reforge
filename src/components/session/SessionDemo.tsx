@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { Pause, Play, Video } from "lucide-react";
+import { Download, Pause, Play, Video } from "lucide-react";
 import { FOUNDER, FOUNDER_SESSION } from "@/lib/seo";
 
 const DEMOS = [
@@ -9,6 +9,7 @@ const DEMOS = [
     id: "zoom-uk",
     platform: "Zoom",
     src: "/videos/founder-session-demo.mp4",
+    poster: "/images/session-posters/zoom-uk.jpg",
     label: "Zoom · UK client",
     blurb:
       "UK client (40+) stuck on daily consistency and real muscle — left with a plan he could keep.",
@@ -17,6 +18,7 @@ const DEMOS = [
     id: "meet-usa",
     platform: "Google Meet",
     src: "/videos/founder-google-meet-usa.mp4",
+    poster: "/images/session-posters/meet-usa.jpg",
     label: "Google Meet · USA client",
     blurb:
       "USA client on Google Meet while the founder jots her words in a notebook — clarity, then next steps.",
@@ -25,19 +27,24 @@ const DEMOS = [
     id: "zoom-ng",
     platform: "Zoom",
     src: "/videos/founder-zoom-nigeria.mp4",
+    poster: "/images/session-posters/zoom-nigeria.jpg",
     label: "Zoom · Nigeria client",
     blurb:
       "Nigeria client mapping a home plan that fits Lagos life — local food, busy weeks, real progress.",
   },
 ] as const;
 
+const DEMOS_ZIP = "/downloads/talk-with-founder-demos.zip";
+
 function DemoPlayer({
   src,
+  poster,
   platform,
   label,
   blurb,
 }: {
   src: string;
+  poster: string;
   platform: string;
   label: string;
   blurb: string;
@@ -81,7 +88,7 @@ function DemoPlayer({
           ref={videoRef}
           className="h-full w-full object-cover"
           src={src}
-          poster="/images/founder.jpg"
+          poster={poster}
           playsInline
           preload="metadata"
           onPlay={() => setPlaying(true)}
@@ -92,7 +99,7 @@ function DemoPlayer({
           type="button"
           onClick={toggle}
           className={`absolute inset-0 flex items-center justify-center transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-[var(--lime)] ${
-            playing ? "bg-transparent" : "bg-black/35 hover:bg-black/45"
+            playing ? "bg-transparent" : "bg-black/25 hover:bg-black/35"
           }`}
           aria-label={playing ? `Pause ${platform} demo` : `Play ${platform} demo`}
         >
@@ -126,16 +133,26 @@ function DemoPlayer({
 export function SessionDemo() {
   return (
     <section aria-labelledby="session-demo" className="space-y-5">
-      <div className="max-w-3xl">
-        <p className="section-eyebrow mb-2">3 live demos · side by side</p>
-        <h2 id="session-demo" className="display-title text-3xl md:text-4xl mb-3">
-          UK · USA · Nigeria with the founder
-        </h2>
-        <p className="text-[var(--text-muted)] leading-relaxed">
-          Three real-feel sessions with {FOUNDER.formalName}: Zoom (UK), Google Meet (USA), and
-          Zoom (Nigeria). Valued at ${FOUNDER_SESSION.priceUsd} — founder favour{" "}
-          <strong className="text-[var(--lime)]">${FOUNDER_SESSION.collectUsd}</strong>.
-        </p>
+      <div className="flex flex-col lg:flex-row lg:items-end gap-4 lg:justify-between">
+        <div className="max-w-3xl">
+          <p className="section-eyebrow mb-2">3 live demos · side by side</p>
+          <h2 id="session-demo" className="display-title text-3xl md:text-4xl mb-3">
+            UK · USA · Nigeria with the founder
+          </h2>
+          <p className="text-[var(--text-muted)] leading-relaxed">
+            Three real-feel sessions with {FOUNDER.formalName}: Zoom (UK), Google Meet (USA), and
+            Zoom (Nigeria). Valued at ${FOUNDER_SESSION.priceUsd} — founder favour{" "}
+            <strong className="text-[var(--lime)]">${FOUNDER_SESSION.collectUsd}</strong>.
+          </p>
+        </div>
+        <a
+          href={DEMOS_ZIP}
+          download="talk-with-founder-demos.zip"
+          className="btn-secondary !min-h-0 !py-2.5 !px-4 text-sm inline-flex items-center gap-2 shrink-0 self-start lg:self-auto"
+        >
+          <Download size={16} aria-hidden />
+          Download all 3 videos
+        </a>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 items-stretch">
